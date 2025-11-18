@@ -1,0 +1,3388 @@
+{
+	"info": {
+		"_postman_id": "369b5186-a99d-4125-8e52-2d054503e368",
+		"name": "Jotter API",
+		"description": "Complete file management system with folders, files, locker, trash, favorites, and sharing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48331400",
+		"_collection_link": "https://darkskyofficially-3537713.postman.co/workspace/xd%3F's-Workspace~7b215bbd-647e-48b0-8c64-fa3bf2e5e8cf/collection/48331400-369b5186-a99d-4125-8e52-2d054503e368?action=share&source=collection_link&creator=48331400"
+	},
+	"item": [
+		{
+			"name": "COMMON",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"client3@example.com\",\n  \"password\": \"1qazxsw2\",\n  \"role\": \"client\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/auth/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								},
+								"description": "Register a new user"
+							},
+							"response": []
+						},
+						{
+							"name": "Verify Email",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Parse the JSON response body",
+											"let response = pm.response.json();",
+											"",
+											"// Check if the response code is 200 (Login Successful)",
+											"if (response.code === 200) {",
+											"    let accessToken = response.data.attributes.tokens.access.token;",
+											"    let role = response.data.attributes.user.role;",
+											"    pm.collectionVariables.set(`${role}AccessToken`, accessToken);",
+											"    pm.collectionVariables.set(`accessToken`, accessToken);",
+											"    console.log(\"Access token set in collectionVariables: userAccessToken\");",
+											"} else {",
+											"    console.log(\"Login failed: \" + response.message);",
+											"}",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"client3@example.com\",\n  \"code\": \"833113\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/auth/verify-email",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth",
+										"verify-email"
+									]
+								},
+								"description": "Verify user email with token"
+							},
+							"response": []
+						},
+						{
+							"name": "Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Parse the JSON response body",
+											"let response = pm.response.json();",
+											"",
+											"// Check if the response code is 200 (Login Successful)",
+											"if (response.code === 200) {",
+											"    let accessToken = response.data.attributes.tokens.access.token;",
+											"    let role = response.data.attributes.user.role;",
+											"    pm.collectionVariables.set(`${role}AccessToken`, accessToken);",
+											"    pm.collectionVariables.set(`accessToken`, accessToken);",
+											"    console.log(\"Access token set in collectionVariables: userAccessToken\");",
+											"} else {",
+											"    console.log(\"Login failed: \" + response.message);",
+											"}",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"client@gmail.com\",\n  \"password\": \"1qazxsw2\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/auth/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								},
+								"description": "Login with email and password"
+							},
+							"response": []
+						},
+						{
+							"name": "Forgot Password",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"john@example.com\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/auth/forgot-password",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth",
+										"forgot-password"
+									]
+								},
+								"description": "Request password reset email"
+							},
+							"response": []
+						},
+						{
+							"name": "Reset Password",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"token\": \"reset_token_here\",\n  \"password\": \"NewPassword123!\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/auth/reset-password",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth",
+										"reset-password"
+									]
+								},
+								"description": "Reset password with token"
+							},
+							"response": []
+						},
+						{
+							"name": "Change Password",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"oldPassword\": \"Password123!\",\n  \"newPassword\": \"NewPassword123!\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/auth/change-password",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth",
+										"change-password"
+									]
+								},
+								"description": "Change password for authenticated user"
+							},
+							"response": []
+						},
+						{
+							"name": "Logout",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"refreshToken\": \"refresh_token_here\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/auth/logout",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth",
+										"logout"
+									]
+								},
+								"description": "Logout user"
+							},
+							"response": []
+						},
+						{
+							"name": "Refresh Tokens",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"refreshToken\": \"refresh_token_here\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/auth/refresh-tokens",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth",
+										"refresh-tokens"
+									]
+								},
+								"description": "Refresh access and refresh tokens"
+							},
+							"response": []
+						},
+						{
+							"name": "Send Verification Email",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/auth/send-verification-email",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth",
+										"send-verification-email"
+									]
+								},
+								"description": "Resend verification email"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Me",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"password\": \"Password123!\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/auth/delete-me",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth",
+										"delete-me"
+									]
+								},
+								"description": "Delete own account"
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "ADMIN",
+			"item": [
+				{
+					"name": "Settings",
+					"item": [
+						{
+							"name": "Create/Modify AboutUs",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"content\":\"this is a content\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/settings/about",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"settings",
+										"about"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get About Us",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/settings/about",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"settings",
+										"about"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create/Modify TermsAndCondition",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"content\": \"John Dozzze\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/settings/terms",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"settings",
+										"terms"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get TermsAndCondition",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"content\": \"John Dozzze\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/settings/terms",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"settings",
+										"terms"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create/Modify PrivacyPolicy",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"content\": \"John Dozzze\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/settings/privacy",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"settings",
+										"privacy"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get PrivacyPolicy",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"content\": \"John Dozzze\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/settings/privacy",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"settings",
+										"privacy"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create/Modify Support",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"content\": \"John Dozzze\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/settings/support",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"settings",
+										"support"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Support",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"content\": \"John Dozzze\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/settings/support",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"settings",
+										"support"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "USER",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"client3@example.com\",\n  \"password\": \"1qazxsw2\",\n  \"role\": \"client\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/auth/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								},
+								"description": "Register a new user"
+							},
+							"response": []
+						},
+						{
+							"name": "Verify Email",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Parse the JSON response body",
+											"let response = pm.response.json();",
+											"",
+											"// Check if the response code is 200 (Login Successful)",
+											"if (response.code === 200) {",
+											"    let accessToken = response.data.attributes.tokens.access.token;",
+											"    let role = response.data.attributes.user.role;",
+											"    pm.collectionVariables.set(`${role}AccessToken`, accessToken);",
+											"    pm.collectionVariables.set(`accessToken`, accessToken);",
+											"    console.log(\"Access token set in collectionVariables: userAccessToken\");",
+											"} else {",
+											"    console.log(\"Login failed: \" + response.message);",
+											"}",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"client3@example.com\",\n  \"code\": \"833113\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/auth/verify-email",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth",
+										"verify-email"
+									]
+								},
+								"description": "Verify user email with token"
+							},
+							"response": []
+						},
+						{
+							"name": "Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"// Parse the JSON response body",
+											"let response = pm.response.json();",
+											"",
+											"// Check if the response code is 200 (Login Successful)",
+											"if (response.code === 200) {",
+											"    let accessToken = response.data.attributes.tokens.access.token;",
+											"    let role = response.data.attributes.user.role;",
+											"    pm.collectionVariables.set(`${role}AccessToken`, accessToken);",
+											"    pm.collectionVariables.set(`accessToken`, accessToken);",
+											"    console.log(\"Access token set in collectionVariables: userAccessToken\");",
+											"} else {",
+											"    console.log(\"Login failed: \" + response.message);",
+											"}",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"1qazxsw2\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/auth/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								},
+								"description": "Login with email and password"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Folders",
+					"item": [
+						{
+							"name": "Create Folder",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if (pm.response.code === 201) {",
+											"    const response = pm.response.json();",
+											"    if (response.data && response.data._id) {",
+											"        pm.collectionVariables.set('folder_id', response.data._id);",
+											"    }",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"qualification\",\n  \"parentFolder\": \"691846f7ddf7a5ae47301c77\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/folders",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"folders"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "SUCCESS",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"qualification\",\n  \"parentFolder\": \"691846f7ddf7a5ae47301c77\"\n}"
+										},
+										"url": {
+											"raw": "{{base_url}}/folders",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"folders"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Content-Security-Policy",
+											"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "372"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"174-c1XC0mF6N63IuNuYCNMrhRYPV3I\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 15 Nov 2025 09:30:48 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"code\": 201,\n    \"message\": \"Folder created successfully\",\n    \"data\": {\n        \"attributes\": {\n            \"userId\": \"691846565714d72dd09c99f9\",\n            \"name\": \"qualification\",\n            \"parentFolder\": \"691846f7ddf7a5ae47301c77\",\n            \"path\": \"/My Documents/qualification\",\n            \"status\": \"normal\",\n            \"color\": null,\n            \"isLocker\": false,\n            \"fileCount\": 0,\n            \"folderCount\": 0,\n            \"size\": 0,\n            \"createdAt\": \"2025-11-15T09:30:48.128Z\",\n            \"id\": \"69184848c8dc35bb4a2cad51\"\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Get Root Contents",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/folders/root/contents",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"folders",
+										"root",
+										"contents"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "SUCCESS",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/folders/root/contents",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"folders",
+												"root",
+												"contents"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Content-Security-Policy",
+											"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "363"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"16b-OtEp4Ahm5VcJYaDikNn+UtvrNhA\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 15 Nov 2025 09:31:36 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"code\": 200,\n    \"message\": \"Folder contents retrieved\",\n    \"data\": {\n        \"attributes\": {\n            \"folders\": [\n                {\n                    \"userId\": \"691846565714d72dd09c99f9\",\n                    \"name\": \"My Documents\",\n                    \"parentFolder\": null,\n                    \"path\": \"/My Documents\",\n                    \"status\": \"normal\",\n                    \"color\": \"#FF5733\",\n                    \"isLocker\": false,\n                    \"fileCount\": 0,\n                    \"folderCount\": 2,\n                    \"size\": 0,\n                    \"createdAt\": \"2025-11-15T09:25:11.783Z\",\n                    \"id\": \"691846f7ddf7a5ae47301c77\"\n                }\n            ],\n            \"files\": []\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Get Folder Contents",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/folders/:folderId/contents",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"folders",
+										":folderId",
+										"contents"
+									],
+									"variable": [
+										{
+											"key": "folderId",
+											"value": "691846f7ddf7a5ae47301c77"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get Folder Contents",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/folders/:folderId/contents",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"folders",
+												":folderId",
+												"contents"
+											],
+											"variable": [
+												{
+													"key": "folderId",
+													"value": "691846f7ddf7a5ae47301c77"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Content-Security-Policy",
+											"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "700"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"2bc-Sw84ptHnVBj3rh6zp+GBrXUQ1kc\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 15 Nov 2025 09:36:29 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"code\": 200,\n    \"message\": \"Folder contents retrieved\",\n    \"data\": {\n        \"attributes\": {\n            \"folders\": [\n                {\n                    \"userId\": \"691846565714d72dd09c99f9\",\n                    \"name\": \"qualification\",\n                    \"parentFolder\": \"691846f7ddf7a5ae47301c77\",\n                    \"path\": \"/Renamed Folder/qualification\",\n                    \"status\": \"normal\",\n                    \"color\": null,\n                    \"isLocker\": false,\n                    \"fileCount\": 0,\n                    \"folderCount\": 0,\n                    \"size\": 0,\n                    \"createdAt\": \"2025-11-15T09:30:48.128Z\",\n                    \"id\": \"69184848c8dc35bb4a2cad51\"\n                },\n                {\n                    \"userId\": \"691846565714d72dd09c99f9\",\n                    \"name\": \"My Documents\",\n                    \"parentFolder\": \"691846f7ddf7a5ae47301c77\",\n                    \"path\": \"/Renamed Folder/My Documents\",\n                    \"status\": \"normal\",\n                    \"color\": \"#FF5733\",\n                    \"isLocker\": false,\n                    \"fileCount\": 0,\n                    \"folderCount\": 0,\n                    \"size\": 0,\n                    \"createdAt\": \"2025-11-15T09:30:06.877Z\",\n                    \"id\": \"6918481ec8dc35bb4a2cad43\"\n                }\n            ],\n            \"files\": []\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Get Folder Details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/folders/:folderID",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"folders",
+										":folderID"
+									],
+									"variable": [
+										{
+											"key": "folderID",
+											"value": "691846f7ddf7a5ae47301c77"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "SUCCESS",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/folders/:folderID",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"folders",
+												":folderID"
+											],
+											"variable": [
+												{
+													"key": "folderID",
+													"value": "691846f7ddf7a5ae47301c77"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Content-Security-Policy",
+											"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "329"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"149-mqd1mhHXiPdpAsuozbsFRF3qfl0\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 15 Nov 2025 09:33:33 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"code\": 200,\n    \"message\": \"Folder retrieved\",\n    \"data\": {\n        \"attributes\": {\n            \"userId\": \"691846565714d72dd09c99f9\",\n            \"name\": \"My Documents\",\n            \"parentFolder\": null,\n            \"path\": \"/My Documents\",\n            \"status\": \"normal\",\n            \"color\": \"#FF5733\",\n            \"isLocker\": false,\n            \"fileCount\": 0,\n            \"folderCount\": 2,\n            \"size\": 0,\n            \"createdAt\": \"2025-11-15T09:25:11.783Z\",\n            \"id\": \"691846f7ddf7a5ae47301c77\"\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Update Folder",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Renamed Folder\",\n  \"color\": \"#00FF00\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/folders/:folderID",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"folders",
+										":folderID"
+									],
+									"variable": [
+										{
+											"key": "folderID",
+											"value": "691846f7ddf7a5ae47301c77"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "SUCCESS",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"Renamed Folder\",\n  \"color\": \"#00FF00\"\n}"
+										},
+										"url": {
+											"raw": "{{base_url}}/folders/:folderID",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"folders",
+												":folderID"
+											],
+											"variable": [
+												{
+													"key": "folderID",
+													"value": "691846f7ddf7a5ae47301c77"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Content-Security-Policy",
+											"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "344"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"158-cGevDm1z8h2gUqB49UoyrQO+Guo\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 15 Nov 2025 09:34:25 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"code\": 200,\n    \"message\": \"Folder updated successfully\",\n    \"data\": {\n        \"attributes\": {\n            \"userId\": \"691846565714d72dd09c99f9\",\n            \"name\": \"Renamed Folder\",\n            \"parentFolder\": null,\n            \"path\": \"/Renamed Folder\",\n            \"status\": \"normal\",\n            \"color\": \"#00FF00\",\n            \"isLocker\": false,\n            \"fileCount\": 0,\n            \"folderCount\": 2,\n            \"size\": 0,\n            \"createdAt\": \"2025-11-15T09:25:11.783Z\",\n            \"id\": \"691846f7ddf7a5ae47301c77\"\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Move Folder",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"targetFolder\": \"6918481ec8dc35bb4a2cad43\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/folders/:folderId/move",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"folders",
+										":folderId",
+										"move"
+									],
+									"variable": [
+										{
+											"key": "folderId",
+											"value": "69184848c8dc35bb4a2cad51"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Move Folder",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"targetFolder\": \"6918481ec8dc35bb4a2cad43\"\n}"
+										},
+										"url": {
+											"raw": "{{base_url}}/folders/:folderId/move",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"folders",
+												":folderId",
+												"move"
+											],
+											"variable": [
+												{
+													"key": "folderId",
+													"value": "69184848c8dc35bb4a2cad51"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Content-Security-Policy",
+											"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "385"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"181-6Oc4hIEfM/DGZsHumpmp6FRE6oo\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 15 Nov 2025 09:43:29 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"code\": 200,\n    \"message\": \"Folder moved successfully\",\n    \"data\": {\n        \"attributes\": {\n            \"userId\": \"691846565714d72dd09c99f9\",\n            \"name\": \"qualification\",\n            \"parentFolder\": \"6918481ec8dc35bb4a2cad43\",\n            \"path\": \"/Renamed Folder/My Documents/qualification\",\n            \"status\": \"normal\",\n            \"color\": null,\n            \"isLocker\": false,\n            \"fileCount\": 0,\n            \"folderCount\": 0,\n            \"size\": 0,\n            \"createdAt\": \"2025-11-15T09:30:48.128Z\",\n            \"id\": \"69184848c8dc35bb4a2cad51\"\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Search Folders",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/folders/search?search=My",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"folders",
+										"search"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": "My"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Search Folders",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/folders/search?search=My",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"folders",
+												"search"
+											],
+											"query": [
+												{
+													"key": "search",
+													"value": "My"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Content-Security-Policy",
+											"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "366"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"16e-FD8FK6pd7ya7hGUbz47la/D78kE\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 15 Nov 2025 09:47:24 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"code\": 200,\n    \"message\": \"Search results\",\n    \"data\": {\n        \"attributes\": [\n            {\n                \"userId\": \"691846565714d72dd09c99f9\",\n                \"name\": \"My Documents\",\n                \"parentFolder\": \"691846f7ddf7a5ae47301c77\",\n                \"path\": \"/Renamed Folder/My Documents\",\n                \"status\": \"normal\",\n                \"color\": \"#FF5733\",\n                \"isLocker\": false,\n                \"fileCount\": 0,\n                \"folderCount\": 1,\n                \"size\": 0,\n                \"createdAt\": \"2025-11-15T09:30:06.877Z\",\n                \"id\": \"6918481ec8dc35bb4a2cad43\"\n            }\n        ]\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Delete Folder",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/folders/:folderId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"folders",
+										":folderId"
+									],
+									"variable": [
+										{
+											"key": "folderId",
+											"value": "6918481ec8dc35bb4a2cad43"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Delete Folder",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/folders/:folderId",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"folders",
+												":folderId"
+											],
+											"variable": [
+												{
+													"key": "folderId",
+													"value": "6918481ec8dc35bb4a2cad43"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Content-Security-Policy",
+											"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "379"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"17b-VdDLl4ByxNsL7Q/U9A02ur67Gmo\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 15 Nov 2025 09:48:30 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"code\": 200,\n    \"message\": \"Folder deleted successfully\",\n    \"data\": {\n        \"attributes\": {\n            \"userId\": \"691846565714d72dd09c99f9\",\n            \"name\": \"My Documents\",\n            \"parentFolder\": \"691846f7ddf7a5ae47301c77\",\n            \"path\": \"/Renamed Folder/My Documents\",\n            \"status\": \"archived\",\n            \"color\": \"#FF5733\",\n            \"isLocker\": false,\n            \"fileCount\": 0,\n            \"folderCount\": 1,\n            \"size\": 0,\n            \"createdAt\": \"2025-11-15T09:30:06.877Z\",\n            \"id\": \"6918481ec8dc35bb4a2cad43\"\n        }\n    }\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Files",
+					"item": [
+						{
+							"name": "Upload File",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"if (pm.response.code === 201) {",
+											"    const response = pm.response.json();",
+											"    if (response.data && response.data._id) {",
+											"        pm.collectionVariables.set('file_id', response.data._id);",
+											"    }",
+											"}"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "files",
+											"type": "file",
+											"src": [
+												"/home/iput-object/EMPIRE/ando-install.sh",
+												"/home/iput-object/Pictures/wallpaper/photo_2025-02-03_23-26-46.jpg",
+												"/home/iput-object/Pictures/wallpaper/wallpaperflare.com_wallpaper.jpg"
+											]
+										},
+										{
+											"key": "folderId",
+											"value": "sfff",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/files",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"files"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Upload File",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "files",
+													"type": "file",
+													"src": "/home/iput-object/EMPIRE/ando-install.sh"
+												},
+												{
+													"key": "folderId",
+													"value": "sfff",
+													"type": "text",
+													"disabled": true
+												}
+											]
+										},
+										"url": {
+											"raw": "{{base_url}}/files",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"files"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "",
+									"header": [
+										{
+											"key": "Content-Security-Policy",
+											"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "564"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"234-a5f3zZ+fDanFDjNCZtVFuwFIPSw\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 18 Nov 2025 20:59:42 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"code\": 200,\n    \"message\": \"Files Has Been Uploaded\",\n    \"data\": {\n        \"attributes\": [\n            {\n                \"userId\": \"691cb65e3a58abcee9e4fa17\",\n                \"folderId\": null,\n                \"name\": \"ando-install-1763499582440-551787624.sh\",\n                \"originalName\": \"ando-install.sh\",\n                \"path\": \"/home/iput-object/EMPIRE/web-jects/jotter-app-backend/drive/691cb65e3a58abcee9e4fa17/ando-install-1763499582440-551787624.sh\",\n                \"fileType\": \"application/x-sh\",\n                \"size\": 1993,\n                \"isArchived\": false,\n                \"isLocked\": false,\n                \"metadata\": {\n                    \"encoding\": \"7bit\",\n                    \"fieldname\": \"files\"\n                },\n                \"lastAccessedAt\": null,\n                \"createdAt\": \"2025-11-18T20:59:42.452Z\",\n                \"id\": \"691cde3e225f7e432145b12f\"\n            }\n        ]\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Query FIles",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/files/query",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"files",
+										"query"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get Files",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/files/query",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"files",
+												"query"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "",
+									"header": [
+										{
+											"key": "Content-Security-Policy",
+											"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"454-QkXnBDoDTs5JnGbf5QrKq4UwY8U\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "br"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 18 Nov 2025 20:59:53 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"code\": 200,\n    \"message\": \"Query Files\",\n    \"data\": {\n        \"attributes\": {\n            \"results\": [\n                {\n                    \"userId\": \"691cb65e3a58abcee9e4fa17\",\n                    \"folderId\": null,\n                    \"name\": \"ando-install-1763498665990-919313388.sh\",\n                    \"originalName\": \"ando-install.sh\",\n                    \"path\": \"/home/iput-object/EMPIRE/web-jects/jotter-app-backend/drive/691cb65e3a58abcee9e4fa17/ando-install-1763498665990-919313388.sh\",\n                    \"fileType\": \"application/x-sh\",\n                    \"size\": 1993,\n                    \"isArchived\": false,\n                    \"isLocked\": false,\n                    \"metadata\": {\n                        \"encoding\": \"7bit\",\n                        \"fieldname\": \"files\"\n                    },\n                    \"lastAccessedAt\": null,\n                    \"createdAt\": \"2025-11-18T20:44:26.004Z\",\n                    \"id\": \"691cdaa9749aa0a008f28359\"\n                },\n                {\n                    \"userId\": \"691cb65e3a58abcee9e4fa17\",\n                    \"folderId\": null,\n                    \"name\": \"ando-install-1763499582440-551787624.sh\",\n                    \"originalName\": \"ando-install.sh\",\n                    \"path\": \"/home/iput-object/EMPIRE/web-jects/jotter-app-backend/drive/691cb65e3a58abcee9e4fa17/ando-install-1763499582440-551787624.sh\",\n                    \"fileType\": \"application/x-sh\",\n                    \"size\": 1993,\n                    \"isArchived\": false,\n                    \"isLocked\": false,\n                    \"metadata\": {\n                        \"encoding\": \"7bit\",\n                        \"fieldname\": \"files\"\n                    },\n                    \"lastAccessedAt\": null,\n                    \"createdAt\": \"2025-11-18T20:59:42.452Z\",\n                    \"id\": \"691cde3e225f7e432145b12f\"\n                }\n            ],\n            \"page\": 1,\n            \"limit\": 10,\n            \"totalPages\": 1,\n            \"totalResults\": 2\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Get File Details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/files/:fileId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"files",
+										":fileId"
+									],
+									"variable": [
+										{
+											"key": "fileId",
+											"value": "691cde3e225f7e432145b12f"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get File Details",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/files/:fileId",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"files",
+												":fileId"
+											],
+											"variable": [
+												{
+													"key": "fileId",
+													"value": "691cde3e225f7e432145b12f"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "",
+									"header": [
+										{
+											"key": "Content-Security-Policy",
+											"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "552"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"228-OgI3tp004VrnBHxrvlpl1Sogamg\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 18 Nov 2025 21:00:48 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"code\": 200,\n    \"message\": \"File Response\",\n    \"data\": {\n        \"attributes\": {\n            \"userId\": \"691cb65e3a58abcee9e4fa17\",\n            \"folderId\": null,\n            \"name\": \"ando-install-1763499582440-551787624.sh\",\n            \"originalName\": \"ando-install.sh\",\n            \"path\": \"/home/iput-object/EMPIRE/web-jects/jotter-app-backend/drive/691cb65e3a58abcee9e4fa17/ando-install-1763499582440-551787624.sh\",\n            \"fileType\": \"application/x-sh\",\n            \"size\": 1993,\n            \"isArchived\": false,\n            \"isLocked\": false,\n            \"metadata\": {\n                \"encoding\": \"7bit\",\n                \"fieldname\": \"files\"\n            },\n            \"lastAccessedAt\": null,\n            \"createdAt\": \"2025-11-18T20:59:42.452Z\",\n            \"id\": \"691cde3e225f7e432145b12f\"\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Update File (Rename)",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"renamed_file.sh\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/files/:fileId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"files",
+										":fileId"
+									],
+									"variable": [
+										{
+											"key": "fileId",
+											"value": "691cde3e225f7e432145b12f"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Update File (Rename)",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"renamed_file.sh\"\n}"
+										},
+										"url": {
+											"raw": "{{base_url}}/files/:fileId",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"files",
+												":fileId"
+											],
+											"variable": [
+												{
+													"key": "fileId",
+													"value": "691cde3e225f7e432145b12f"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "",
+									"header": [
+										{
+											"key": "Content-Security-Policy",
+											"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "561"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"231-1T9xUjmV5SVBiV9EjQyJ0h1TW18\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 18 Nov 2025 21:06:37 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"code\": 200,\n    \"message\": \"Files Has Been Renamed\",\n    \"data\": {\n        \"attributes\": {\n            \"userId\": \"691cb65e3a58abcee9e4fa17\",\n            \"folderId\": null,\n            \"name\": \"ando-install-1763499582440-551787624.sh\",\n            \"originalName\": \"renamed_file.sh\",\n            \"path\": \"/home/iput-object/EMPIRE/web-jects/jotter-app-backend/drive/691cb65e3a58abcee9e4fa17/ando-install-1763499582440-551787624.sh\",\n            \"fileType\": \"application/x-sh\",\n            \"size\": 1993,\n            \"isArchived\": false,\n            \"isLocked\": false,\n            \"metadata\": {\n                \"encoding\": \"7bit\",\n                \"fieldname\": \"files\"\n            },\n            \"lastAccessedAt\": null,\n            \"createdAt\": \"2025-11-18T20:59:42.452Z\",\n            \"id\": \"691cde3e225f7e432145b12f\"\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Move File",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"targetFolder\": \"{{folder_id}}\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/files/:fileId/move",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"files",
+										":fileId",
+										"move"
+									],
+									"variable": [
+										{
+											"key": "fileId",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Copy File",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"targetFolder\": \"{{folder_id}}\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/files/:fileId/copy",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"files",
+										":fileId",
+										"copy"
+									],
+									"variable": [
+										{
+											"key": "fileId",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Download File",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/files/:fileId/download",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"files",
+										":fileId",
+										"download"
+									],
+									"variable": [
+										{
+											"key": "fileId",
+											"value": "691cdaa9749aa0a008f28359"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Download File",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/files/:fileId/download",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"files",
+												":fileId",
+												"download"
+											],
+											"variable": [
+												{
+													"key": "fileId",
+													"value": "691cdaa9749aa0a008f28359"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "",
+									"header": [
+										{
+											"key": "Content-Security-Policy",
+											"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Disposition",
+											"value": "attachment; filename=\"ando-install.sh\""
+										},
+										{
+											"key": "Accept-Ranges",
+											"value": "bytes"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "public, max-age=0"
+										},
+										{
+											"key": "Last-Modified",
+											"value": "Tue, 18 Nov 2025 20:44:25 GMT"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"7c9-19a98b62807\""
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/x-sh"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "br"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 18 Nov 2025 20:50:49 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										}
+									],
+									"cookie": [],
+									"body": "#!/bin/bash\n\nset -e\n\necho \"============================================\"\necho \"   Android Studio Auto Installer (Ubuntu)\"\necho \"============================================\"\n\n# Install dependencies\necho \"[1/6] Installing dependencies...\"\nsudo apt update\nsudo apt install -y wget unzip lib32stdc++6 lib32z1\n\n# Download latest Android Studio\nif [[ ! -f android-studio.tar.gz ]]; then\n    echo \"[2/6] Downloading Android Studio...\"\n    wget -O android-studio.tar.gz https://redirector.gvt1.com/edgedl/android/studio/ide-zips/latest/android-studio-2024.tar.gz || \\\n    wget -O android-studio.tar.gz https://r4---sn-h5mi0c-q5jl.gvt1.com/edgedl/android/studio/ide-zips/2025.2.1.7/android-studio-2025.2.1.7-linux.tar.gz?cms_redirect=yes&met=1763277117,&mh=oe&mip=103.238.115.167&mm=28&mn=sn-h5mi0c-q5jl&ms=nvh&mt=1763275106&mv=u&mvi=4&pl=24&rms=nvh,nvh&shardbypass=sd&smhost=r4---sn-h5mi0c-q5j6.gvt1.com\nfi\n# Extract\necho \"[3/6] Extracting files...\"\nsudo rm -rf /opt/android-studio\nsudo tar -xzf android-studio.tar.gz -C /opt\nrm android-studio.tar.gz\n\n# Create symbolic link\necho \"[4/6] Creating symlink...\"\nsudo ln -sf /opt/android-studio/bin/studio.sh /usr/local/bin/android-studio\n\n# Create desktop entry\necho \"[5/6] Creating Desktop icon...\"\ncat <<EOF | sudo tee /usr/share/applications/android-studio.desktop\n[Desktop Entry]\nVersion=1.0\nType=Application\nName=Android Studio\nExec=/opt/android-studio/bin/studio.sh\nIcon=/opt/android-studio/bin/studio.png\nTerminal=false\nStartupNotify=true\nCategories=Development;IDE;\nEOF\n\nsudo chmod +x /usr/share/applications/android-studio.desktop\n\n# Add to PATH\necho \"[6/6] Adding to PATH...\"\nif ! grep -q \"ANDROID_STUDIO\" ~/.bashrc; then\n    echo 'export PATH=$PATH:/opt/android-studio/bin # ANDROID_STUDIO' >> ~/.bashrc\nfi\n\necho \"============================================\"\necho \" Android Studio Installed Successfully!\"\necho \" Launch from: Applications → Android Studio\"\necho \" or run: android-studio\"\necho \"============================================\"\n"
+								}
+							]
+						},
+						{
+							"name": "Replace File",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": []
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/files/:fileId/replace",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"files",
+										":fileId",
+										"replace"
+									],
+									"variable": [
+										{
+											"key": "fileId",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Search Files",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/files/search?q=report",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"files",
+										"search"
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "report"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete File (Bin)",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/files/:fileId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"files",
+										":fileId"
+									],
+									"variable": [
+										{
+											"key": "fileId",
+											"value": "691cb685d3d152ec6d566044"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete File (Permanent)",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/files/:fileId/permanent",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"files",
+										":fileId",
+										"permanent"
+									],
+									"variable": [
+										{
+											"key": "fileId",
+											"value": "691cb7ee935a212bf188765b"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Locker",
+					"item": [
+						{
+							"name": "Create Locker",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"pin\": \"1234\",\n  \"securityQuestion\": \"What is your pet's name?\",\n  \"securityAnswer\": \"Fluffy\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/locker",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"locker"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Locker Info",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/locker",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"locker"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Unlock Locker",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"pin\": \"1234\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/locker/unlock",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"locker",
+										"unlock"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reset Locker PIN",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"securityAnswer\": \"Fluffy\",\n  \"newPin\": \"5678\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/locker/reset-pin",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"locker",
+										"reset-pin"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Trash",
+					"item": [
+						{
+							"name": "Move to Trash",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"resourceId\": \"{{file_id}}\",\n  \"resourceType\": \"file\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/trash",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"trash"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Trash Items",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/trash",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"trash"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Restore from Trash",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/trash/:trashId/restore",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"trash",
+										":trashId",
+										"restore"
+									],
+									"variable": [
+										{
+											"key": "trashId"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Permanent Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/trash/:trashId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"trash",
+										":trashId"
+									],
+									"variable": [
+										{
+											"key": "trashId"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Empty Trash",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/trash",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"trash"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Favorites",
+					"item": [
+						{
+							"name": "Add to Favorites",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"resourceId\": \"{{file_id}}\",\n  \"resourceType\": \"File\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/favorites",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"favorites"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Favorites",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/favorites",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"favorites"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove from Favorites",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/favorites/:favoriteId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"favorites",
+										":favoriteId"
+									],
+									"variable": [
+										{
+											"key": "favoriteId"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Share Links",
+					"item": [
+						{
+							"name": "Create Share Link",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"resourceId\": \"{{file_id}}\",\n  \"resourceType\": \"File\",\n  \"canView\": true,\n  \"canDownload\": true,\n  \"canEdit\": false\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/share",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"share"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Password Protected Share",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"resourceId\": \"{{file_id}}\",\n  \"resourceType\": \"File\",\n  \"password\": \"secret123\",\n  \"expiresAt\": \"2024-12-31T23:59:59Z\",\n  \"maxDownloads\": 10,\n  \"canDownload\": true\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/share",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"share"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get My Shared Links",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/share",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"share"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Access Shared Resource (Public)",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"password\": \"secret123\"\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/share/public/:shareToken",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"share",
+										"public",
+										":shareToken"
+									],
+									"variable": [
+										{
+											"key": "shareToken"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Download Shared Resource (Public)",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/share/public/:shareToken/download",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"share",
+										"public",
+										":shareToken",
+										"download"
+									],
+									"variable": [
+										{
+											"key": "shareToken"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Share Link",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"isActive\": false\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/share/:sharedLinkId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"share",
+										":sharedLinkId"
+									],
+									"variable": [
+										{
+											"key": "sharedLinkId"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Share Link",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/share/:sharedLinkId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"share",
+										":sharedLinkId"
+									],
+									"variable": [
+										{
+											"key": "sharedLinkId"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Storage & Activity",
+					"item": [
+						{
+							"name": "Get Storage Quota",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/storage/quota",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"storage",
+										"quota"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Activity Logs",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/storage/activity-logs?limit=50&page=1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"storage",
+										"activity-logs"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "50"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{userAccessToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000/api/v1"
+		},
+		{
+			"key": "jwt_token",
+			"value": ""
+		},
+		{
+			"key": "file_id",
+			"value": ""
+		},
+		{
+			"key": "folder_id",
+			"value": ""
+		},
+		{
+			"key": "userAccessToken",
+			"value": ""
+		},
+		{
+			"key": "accessToken",
+			"value": ""
+		}
+	]
+}
