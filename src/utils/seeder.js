@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
-const { User } = require("../models");
+const { userModel } = require("../modules/user");
 
 const usersData = [
   {
@@ -40,8 +40,8 @@ const dropDatabase = async () => {
 
 const seedUsers = async () => {
   try {
-    await User.deleteMany();
-    await User.insertMany(usersData);
+    await userModel.deleteMany();
+    await userModel.insertMany(usersData);
     console.log("Users seeded successfully!");
   } catch (err) {
     console.error("Error seeding users:", err);

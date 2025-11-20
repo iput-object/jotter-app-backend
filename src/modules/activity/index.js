@@ -1,0 +1,1 @@
+module.exports.activityModel = require('./activity.model')

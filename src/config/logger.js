@@ -1,5 +1,6 @@
-const winston = require('winston');
-const config = require('./config');
+const winston = require("winston");
+const config = require("./config");
+require("winston-daily-rotate-file");
 
 const enumerateErrorFormat = winston.format((info) => {
   if (info instanceof Error) {
@@ -8,22 +9,33 @@ const enumerateErrorFormat = winston.format((info) => {
   return info;
 });
 
+const transport = new winston.transports.DailyRotateFile({
+  dirname: "logs", // folder name
+  filename: "app-%DATE%.log", // log file name pattern
+  datePattern: "YYYY-MM-DD", // daily rotation
+  zippedArchive: false, // zip old logs? (optional)
+  maxSize: "20m", // rotate if file > 20MB
+  maxFiles: "14d", // keep logs for 14 days
+});
+
 const logger = winston.createLogger({
-  level: config.env === 'development' ? 'debug' : 'info',
+  level: config.env === "development" ? "debug" : "info",
   format: winston.format.combine(
     enumerateErrorFormat(),
-    config.env === 'development' ? winston.format.colorize() : winston.format.uncolorize(),
+    config.env === "development"
+      ? winston.format.colorize()
+      : winston.format.uncolorize(),
     winston.format.splat(),
-    winston.format.timestamp({ format: 'YYYY-MM-DDTHH:mm:ss.SSSZ' }), // Add timestamp format
-    winston.format.printf(({ timestamp, level, message }) => `[${level}] ${message}`) // Modify printf format
+    winston.format.timestamp({ format: "YYYY-MM-DDTHH:mm:ss.SSSZ" }), // Add timestamp format
+    winston.format.printf(
+      ({ timestamp, level, message }) => `[${level}] ${message}`
+    ) // Modify printf format
     //winston.format.printf(({ timestamp, level, message }) => `${timestamp} [${level}] ${message}`) // Modify printf format
     // winston.format.printf(({ level, message }) => `${level}: ${message}`)
   ),
   transports: [
-    new winston.transports.Console({
-      stderrLevels: ['error'],
-    }),
-    new winston.transports.File({ filename: 'app.log' }) // Add this line
+    transport,
+    new winston.transports.Console(), // Add console output
   ],
 });
 

@@ -1,0 +1,1409 @@
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://192.168.0.105:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://192.168.0.105:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] GET /api/v1/files/query 200 - 149.366 ms
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://192.168.0.105:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://192.168.0.105:3000
+[[32minfo[39m] GET /api/v1/files/query 200 - 2590.080 ms
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://192.168.0.105:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://192.168.0.105:3000
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://192.168.0.105:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] POST /api/v1/auth/login 200 - 335.190 ms
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[31merror[39m] Error: listen EADDRINUSE: address already in use 127.0.0.1:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at GetAddrInfoReqWrap.callback (node:net:2206:7)
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:134:8)
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[31merror[39m] Error: "fileId" is required
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/middlewares/validate.js:15:17
+    at Layer.handle [as handle_request] (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/route.js:149:13)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/middlewares/auth.js:50:19
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+[[31merror[39m] DELETE /api/v1/files 400 - 88.600 ms - message: "fileId" is required
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[31merror[39m] Error: "fileId" is required
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/middlewares/validate.js:15:17
+    at Layer.handle [as handle_request] (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/route.js:149:13)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/middlewares/auth.js:50:19
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+[[31merror[39m] DELETE /api/v1/files 400 - 235.395 ms - message: "fileId" is required
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] DELETE /api/v1/files 200 - 220.883 ms
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] POST /api/v1/auth/login 200 - 302.521 ms
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[31merror[39m] Error: No files uploaded.
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/file/file.controller.js:11:11
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/utils/catchAsync.js:2:19
+    at Layer.handle [as handle_request] (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/route.js:149:13)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/middlewares/validate.js:18:10
+    at Layer.handle [as handle_request] (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/route.js:149:13)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/middlewares/fileUpload.js:42:7
+    at multerMiddleware (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/multer/lib/make-middleware.js:13:41)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/middlewares/fileUpload.js:40:17
+[[31merror[39m] POST /api/v1/files 400 - 125.736 ms - message: No files uploaded.
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] POST /api/v1/auth/login 200 - 320.980 ms
+[[32minfo[39m] GET /api/v1/files/query 200 - 140.902 ms
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[31merror[39m] Error: Incorrect email or password
+    at Object.loginUserWithEmailAndPassword (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/auth/auth.service.js:11:11)
+    at async /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/auth/auth.controller.js:61:16
+[[31merror[39m] POST /api/v1/auth/login 401 - 207.354 ms - message: Incorrect email or password
+[[31merror[39m] Error: Incorrect email or password
+    at Object.loginUserWithEmailAndPassword (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/auth/auth.service.js:11:11)
+    at async /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/auth/auth.controller.js:61:16
+[[31merror[39m] POST /api/v1/auth/login 401 - 141.194 ms - message: Incorrect email or password
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] POST /api/v1/files 200 - 283.692 ms
+[[32minfo[39m] POST /api/v1/files 200 - 212.276 ms
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] POST /api/v1/files 200 - 236.504 ms
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] POST /api/v1/files 200 - 381.828 ms
+[[32minfo[39m] GET /api/v1/files/query 200 - 179.835 ms
+[[32minfo[39m] GET /api/v1/files/691e181701b4263172d83ebf 200 - 167.678 ms
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[31merror[39m] Error: This API Not found
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/app.js:74:8
+    at Layer.handle [as handle_request] (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/index.js:328:13)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/index.js:286:9
+    at router.process_params (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/index.js:346:12)
+    at Immediate.next (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/index.js:280:10)
+    at Immediate._onImmediate (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/index.js:646:15)
+    at process.processImmediate (node:internal/timers:506:21)
+[[31merror[39m] PUT /api/v1/files/replace 404 - 40.734 ms - message: This API Not found
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[31merror[39m] TypeError: Cannot read properties of undefined (reading 'map')
+    at Object.replaceFiles (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/file/file.service.js:128:16)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/file/file.controller.js:78:34
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/utils/catchAsync.js:2:19
+    at Layer.handle [as handle_request] (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/route.js:149:13)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/middlewares/validate.js:18:10
+    at Layer.handle [as handle_request] (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/route.js:149:13)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/middlewares/auth.js:50:19
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+[[31merror[39m] PUT /api/v1/files/replace 500 - 123.015 ms - message: Cannot read properties of undefined (reading 'map')
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[31merror[39m] TypeError: Cannot read properties of undefined (reading 'length')
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/file/file.controller.js:80:38
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/utils/catchAsync.js:2:19
+    at Layer.handle [as handle_request] (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/route.js:149:13)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/middlewares/validate.js:18:10
+    at Layer.handle [as handle_request] (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/route.js:149:13)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/middlewares/auth.js:50:19
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+[[31merror[39m] PUT /api/v1/files/replace 500 - 128.603 ms - message: Cannot read properties of undefined (reading 'length')
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[31merror[39m] TypeError: Cannot read properties of undefined (reading 'length')
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/file/file.controller.js:80:38
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/utils/catchAsync.js:2:19
+    at Layer.handle [as handle_request] (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/route.js:149:13)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/middlewares/validate.js:18:10
+    at Layer.handle [as handle_request] (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/route.js:149:13)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/middlewares/auth.js:50:19
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+[[31merror[39m] PUT /api/v1/files/replace 500 - 121.566 ms - message: Cannot read properties of undefined (reading 'length')
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[31merror[39m] TypeError: Cannot read properties of undefined (reading 'length')
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/file/file.controller.js:80:23
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/utils/catchAsync.js:2:19
+    at Layer.handle [as handle_request] (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/route.js:149:13)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/middlewares/validate.js:18:10
+    at Layer.handle [as handle_request] (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/route.js:149:13)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/middlewares/auth.js:50:19
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+[[31merror[39m] PUT /api/v1/files/replace 500 - 1053.922 ms - message: Cannot read properties of undefined (reading 'length')
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[31merror[39m] TypeError: Cannot read properties of undefined (reading 'length')
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/file/file.controller.js:80:23
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/utils/catchAsync.js:2:19
+    at Layer.handle [as handle_request] (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/route.js:149:13)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/middlewares/validate.js:18:10
+    at Layer.handle [as handle_request] (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/route.js:149:13)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/middlewares/auth.js:50:19
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+[[31merror[39m] PUT /api/v1/files/replace 500 - 113.948 ms - message: Cannot read properties of undefined (reading 'length')
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[31merror[39m] Error: No files to Replace.
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/file/file.controller.js:81:11
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/utils/catchAsync.js:2:19
+    at Layer.handle [as handle_request] (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/route.js:149:13)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/middlewares/validate.js:18:10
+    at Layer.handle [as handle_request] (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/route.js:149:13)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/middlewares/auth.js:50:19
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+[[31merror[39m] PUT /api/v1/files/replace 400 - 116.303 ms - message: No files to Replace.
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[31merror[39m] Error: No files to Replace.
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/file/file.controller.js:81:11
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/utils/catchAsync.js:2:19
+    at Layer.handle [as handle_request] (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/route.js:149:13)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/middlewares/validate.js:18:10
+    at Layer.handle [as handle_request] (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/route.js:149:13)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/middlewares/auth.js:50:19
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+[[31merror[39m] PUT /api/v1/files/replace 400 - 745.788 ms - message: No files to Replace.
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[31merror[39m] Error: No files to Replace.
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/file/file.controller.js:82:11
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/utils/catchAsync.js:2:19
+    at Layer.handle [as handle_request] (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/route.js:149:13)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/middlewares/validate.js:18:10
+    at Layer.handle [as handle_request] (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/route.js:149:13)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/middlewares/auth.js:50:19
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+[[31merror[39m] PUT /api/v1/files/replace 400 - 872.296 ms - message: No files to Replace.
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] PUT /api/v1/files/replace 200 - 202.243 ms
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[31merror[39m] CastError: Cast to ObjectId failed for value "file" (type string) at path "_id" for model "File"
+    at ObjectId.cast (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/mongoose/lib/schema/objectid.js:250:11)
+    at SchemaType.applySetters (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/mongoose/lib/schematype.js:1219:12)
+    at SchemaType.castForQuery (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/mongoose/lib/schematype.js:1633:15)
+    at cast (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/mongoose/lib/cast.js:389:32)
+    at Query.cast (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/mongoose/lib/query.js:4927:12)
+    at Query._castConditions (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/mongoose/lib/query.js:2237:10)
+    at model.Query._findOne (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/mongoose/lib/query.js:2533:8)
+    at model.Query.exec (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/mongoose/lib/query.js:4447:28)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async getFileById (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/file/file.service.js:16:10)
+[[31merror[39m] PUT /api/v1/files/replace 400 - 138.113 ms - message: Cast to ObjectId failed for value "file" (type string) at path "_id" for model "File"
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[31merror[39m] CastError: Cast to ObjectId failed for value "file" (type string) at path "_id" for model "File"
+    at ObjectId.cast (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/mongoose/lib/schema/objectid.js:250:11)
+    at SchemaType.applySetters (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/mongoose/lib/schematype.js:1219:12)
+    at SchemaType.castForQuery (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/mongoose/lib/schematype.js:1633:15)
+    at cast (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/mongoose/lib/cast.js:389:32)
+    at Query.cast (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/mongoose/lib/query.js:4927:12)
+    at Query._castConditions (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/mongoose/lib/query.js:2237:10)
+    at model.Query._findOne (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/mongoose/lib/query.js:2533:8)
+    at model.Query.exec (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/mongoose/lib/query.js:4447:28)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async getFileById (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/file/file.service.js:18:10)
+[[31merror[39m] PUT /api/v1/files/replace 400 - 165.381 ms - message: Cast to ObjectId failed for value "file" (type string) at path "_id" for model "File"
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[31merror[39m] CastError: Cast to ObjectId failed for value "file" (type string) at path "_id" for model "File"
+    at ObjectId.cast (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/mongoose/lib/schema/objectid.js:250:11)
+    at SchemaType.applySetters (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/mongoose/lib/schematype.js:1219:12)
+    at SchemaType.castForQuery (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/mongoose/lib/schematype.js:1633:15)
+    at cast (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/mongoose/lib/cast.js:389:32)
+    at Query.cast (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/mongoose/lib/query.js:4927:12)
+    at Query._castConditions (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/mongoose/lib/query.js:2237:10)
+    at model.Query._findOne (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/mongoose/lib/query.js:2533:8)
+    at model.Query.exec (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/mongoose/lib/query.js:4447:28)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async getFileById (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/file/file.service.js:18:10)
+[[31merror[39m] PUT /api/v1/files/replace 400 - 125.441 ms - message: Cast to ObjectId failed for value "file" (type string) at path "_id" for model "File"
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[31merror[39m] Error: Invalid file ID
+    at getFileById (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/file/file.service.js:18:11)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/file/file.service.js:134:25
+    at Array.map (<anonymous>)
+    at Object.replaceFiles (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/file/file.service.js:132:16)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/file/file.controller.js:83:34
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/utils/catchAsync.js:2:19
+    at Layer.handle [as handle_request] (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/route.js:149:13)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/middlewares/validate.js:18:10
+    at Layer.handle [as handle_request] (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/layer.js:95:5)
+[[31merror[39m] PUT /api/v1/files/replace 400 - 132.675 ms - message: Invalid file ID
+[[32minfo[39m] GET /api/v1/files/query 200 - 179.543 ms
+[[31merror[39m] ReferenceError: newFileData is not defined
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/file/file.service.js:142:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async Promise.all (index 0)
+    at async Object.replaceFiles (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/file/file.service.js:131:19)
+    at async /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/file/file.controller.js:83:16
+[[31merror[39m] PUT /api/v1/files/replace 500 - 168.316 ms - message: newFileData is not defined
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] PUT /api/v1/files/replace 200 - 456.814 ms
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] PUT /api/v1/files/replace 200 - 386.995 ms
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] PUT /api/v1/files/replace 200 - 386.873 ms
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[31merror[39m] ReferenceError: value is not defined
+    at isObjectId (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/utils/regex.js:2:3)
+    at getFileById (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/file/file.service.js:15:7)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/file/file.service.js:131:25
+    at Array.map (<anonymous>)
+    at Object.replaceFiles (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/file/file.service.js:129:16)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/file/file.controller.js:83:34
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/utils/catchAsync.js:2:19
+    at Layer.handle [as handle_request] (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/route.js:149:13)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/middlewares/validate.js:18:10
+[[31merror[39m] PUT /api/v1/files/replace 500 - 115.889 ms - message: value is not defined
+[[31merror[39m] ReferenceError: value is not defined
+    at isObjectId (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/utils/regex.js:2:3)
+    at getFileById (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/file/file.service.js:15:7)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/file/file.service.js:131:25
+    at Array.map (<anonymous>)
+    at Object.replaceFiles (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/file/file.service.js:129:16)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/file/file.controller.js:83:34
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/utils/catchAsync.js:2:19
+    at Layer.handle [as handle_request] (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/route.js:149:13)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/middlewares/validate.js:18:10
+[[31merror[39m] PUT /api/v1/files/replace 500 - 85.886 ms - message: value is not defined
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[31merror[39m] CastError: Cast to ObjectId failed for value "ss" (type string) at path "_id" for model "File"
+    at ObjectId.cast (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/mongoose/lib/schema/objectid.js:250:11)
+    at SchemaType.applySetters (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/mongoose/lib/schematype.js:1219:12)
+    at SchemaType.castForQuery (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/mongoose/lib/schematype.js:1633:15)
+    at cast (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/mongoose/lib/cast.js:389:32)
+    at Query.cast (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/mongoose/lib/query.js:4927:12)
+    at Query._castConditions (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/mongoose/lib/query.js:2237:10)
+    at model.Query._findOne (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/mongoose/lib/query.js:2533:8)
+    at model.Query.exec (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/mongoose/lib/query.js:4447:28)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async getFileById (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/file/file.service.js:18:10)
+[[31merror[39m] PUT /api/v1/files/replace 400 - 117.173 ms - message: Cast to ObjectId failed for value "ss" (type string) at path "_id" for model "File"
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[31merror[39m] Error: Invalid file ID
+    at getFileById (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/file/file.service.js:16:11)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/file/file.service.js:131:25
+    at Array.map (<anonymous>)
+    at Object.replaceFiles (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/file/file.service.js:129:16)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/file/file.controller.js:83:34
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/utils/catchAsync.js:2:19
+    at Layer.handle [as handle_request] (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/route.js:149:13)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/middlewares/validate.js:18:10
+    at Layer.handle [as handle_request] (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/layer.js:95:5)
+[[31merror[39m] PUT /api/v1/files/replace 400 - 117.242 ms - message: Invalid file ID
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[31merror[39m] Error: "parentFolder" is not allowed
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/middlewares/validate.js:15:17
+    at Layer.handle [as handle_request] (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/route.js:149:13)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/middlewares/auth.js:50:19
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+[[31merror[39m] POST /api/v1/folders 400 - 136.519 ms - message: "parentFolder" is not allowed
+[[32minfo[39m] POST /api/v1/folders 200 - 87.867 ms
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[31merror[39m] TypeError: Cannot read properties of undefined (reading 'findOne')
+    at getFolderById (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/folder/folder.service.js:10:28)
+    at Object.createFolder (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/folder/folder.service.js:24:32)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/folder/folder.controller.js:7:38
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/utils/catchAsync.js:2:19
+    at Layer.handle [as handle_request] (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/route.js:149:13)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/middlewares/validate.js:18:10
+    at Layer.handle [as handle_request] (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/route.js:149:13)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/middlewares/auth.js:50:19
+[[31merror[39m] POST /api/v1/folders 500 - 120.875 ms - message: Cannot read properties of undefined (reading 'findOne')
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[31merror[39m] TypeError: Cannot read properties of undefined (reading 'findOne')
+    at getFolderById (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/folder/folder.service.js:10:28)
+    at Object.createFolder (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/folder/folder.service.js:24:32)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/folder/folder.controller.js:7:38
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/utils/catchAsync.js:2:19
+    at Layer.handle [as handle_request] (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/route.js:149:13)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/middlewares/validate.js:18:10
+    at Layer.handle [as handle_request] (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/node_modules/express/lib/router/route.js:149:13)
+    at /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/middlewares/auth.js:50:19
+[[31merror[39m] POST /api/v1/folders 500 - 156.144 ms - message: Cannot read properties of undefined (reading 'findOne')
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[31merror[39m] Error: Parent folder not found.
+    at Object.createFolder (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/folder/folder.service.js:26:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/folder/folder.controller.js:7:18
+[[31merror[39m] POST /api/v1/folders 400 - 221.126 ms - message: Parent folder not found.
+[[32minfo[39m] POST /api/v1/folders 200 - 266.418 ms
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[31merror[39m] Error: Parent folder not found.
+    at Object.createFolder (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/folder/folder.service.js:28:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/folder/folder.controller.js:7:18
+[[31merror[39m] POST /api/v1/folders 400 - 187.936 ms - message: Parent folder not found.
+[[31merror[39m] Error: Parent folder not found.
+    at Object.createFolder (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/folder/folder.service.js:28:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/folder/folder.controller.js:7:18
+[[31merror[39m] POST /api/v1/folders 400 - 161.389 ms - message: Parent folder not found.
+[[31merror[39m] Error: Parent folder not found.
+    at Object.createFolder (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/folder/folder.service.js:28:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/folder/folder.controller.js:7:18
+[[31merror[39m] POST /api/v1/folders 400 - 167.121 ms - message: Parent folder not found.
+[[32minfo[39m] POST /api/v1/folders 200 - 251.141 ms
+[[31merror[39m] Error: Parent folder not found.
+    at Object.createFolder (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/folder/folder.service.js:28:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/folder/folder.controller.js:7:18
+[[31merror[39m] POST /api/v1/folders 400 - 196.677 ms - message: Parent folder not found.
+[[31merror[39m] Error: Folder already exists
+    at Object.createFolder (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/folder/folder.service.js:41:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/folder/folder.controller.js:7:18
+[[31merror[39m] POST /api/v1/folders 409 - 180.758 ms - message: Folder already exists
+[[32minfo[39m] POST /api/v1/folders 200 - 253.821 ms
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[31merror[39m] Error: Folder already exists
+    at Object.createFolder (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/folder/folder.service.js:41:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/folder/folder.controller.js:7:18
+[[31merror[39m] POST /api/v1/folders 409 - 193.960 ms - message: Folder already exists
+[[31merror[39m] Error: Parent folder not found.
+    at Object.createFolder (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/folder/folder.service.js:28:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/folder/folder.controller.js:7:18
+[[31merror[39m] POST /api/v1/folders 400 - 155.470 ms - message: Parent folder not found.
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] POST /api/v1/folders 200 - 291.906 ms
+[[31merror[39m] ReferenceError: path is not defined
+    at Object.createFolder (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/folder/folder.service.js:30:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/folder/folder.controller.js:7:18
+[[31merror[39m] POST /api/v1/folders 500 - 195.926 ms - message: path is not defined
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[31merror[39m] ReferenceError: path is not defined
+    at Object.createFolder (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/folder/folder.service.js:30:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/folder/folder.controller.js:7:18
+[[31merror[39m] POST /api/v1/folders 500 - 221.901 ms - message: path is not defined
+[[32minfo[39m] POST /api/v1/folders 200 - 316.172 ms
+[[31merror[39m] ReferenceError: path is not defined
+    at Object.createFolder (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/folder/folder.service.js:30:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/folder/folder.controller.js:7:18
+[[31merror[39m] POST /api/v1/folders 500 - 158.519 ms - message: path is not defined
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[31merror[39m] ReferenceError: path is not defined
+    at Object.createFolder (/home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/folder/folder.service.js:30:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /home/iput-object/EMPIRE/web-jects/jotter-app-backend/src/modules/folder/folder.controller.js:7:18
+[[31merror[39m] POST /api/v1/folders 500 - 191.822 ms - message: path is not defined
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] POST /api/v1/folders 200 - 388.186 ms
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server
+[[32minfo[39m] Connected to MongoDB
+[[32minfo[39m] Listening to ip http://localhost:3000
+[[32minfo[39m] Connected to email server

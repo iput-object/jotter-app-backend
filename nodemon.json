@@ -1,0 +1,9 @@
+  {
+    "watch": ["src"],
+    "ext": "js,ts,json",
+    "ignore": ["*.test.js", "**/fixtures/**"],
+    "execMap": {
+      "ts": "ts-node"
+    },
+    "delay": "2500"
+  }

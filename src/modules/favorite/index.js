@@ -1,0 +1,1 @@
+module.exports.favoriteModel = require('./favorite.model')
