@@ -1,16 +1,12 @@
 const path = require("path");
 const httpStatus = require("http-status");
 const fileModel = require("./file.model");
-const { userModel } = require("../user");
+const { userService } = require("../user");
 const { folderService } = require("../folder");
 const ApiError = require("../../utils/ApiError");
 const { delFile, isFileExist } = require("../../utils/fs");
 const { generateFileName } = require("../../utils/name");
 const { isObjectId } = require("../../utils/regex");
-
-const syncStorage = async (userId, size) => {
-  await userModel.findByIdAndUpdate(userId, { $inc: { "storage.used": size } });
-};
 
 const getFileById = async (userId, _id) => {
   if (!isObjectId(_id)) {
@@ -39,7 +35,7 @@ const uploadFiles = async (userId, folderId, filesData) => {
     parent: folderId || null,
     name: file.filename,
     originalName: file.originalname,
-    path: path.join(relativePath, file.originalName),
+    path: path.join(relativePath, file.originalname),
     cloudPath: file.path,
     fileType: file.mimetype,
     size: file.size,
@@ -51,9 +47,9 @@ const uploadFiles = async (userId, folderId, filesData) => {
   }));
 
   const totalSize = filesData.reduce((sum, file) => sum + file.size, 0);
-  if (parent) await folderService.syncFolderSize(folderId, filesData.length, totalSize);
-  await syncStorage(userId, totalSize);
-
+  if (folderId)
+    await folderService.syncFolderSize(folderId, filesData.length, totalSize);
+  await userService.syncStorage(userId, totalSize);
   return await fileModel.insertMany(payloads);
 };
 
@@ -90,14 +86,14 @@ const deleteFiles = async (userId, files) => {
   const response = await Promise.all(
     files.map(async (fileId) => {
       const file = await getFileById(userId, fileId);
-      if (!file) return null;
+      if (!file) return { id: fileId, status: "File not found" };
       file.isTrashed = true;
       const savedFile = await file.save();
       return { id: savedFile._id, originalName: savedFile.originalName };
     })
   );
 
-  return response.filter(boolean);
+  return response;
 };
 
 const permanentDeleteFiles = async (userId, files) => {
@@ -108,7 +104,7 @@ const permanentDeleteFiles = async (userId, files) => {
       if (!doc) return null;
       try {
         await delFile(file.cloudPath);
-        await syncStorage(userId, -file.size);
+        await userService.syncStorage(userId, -file.size);
         await doc.deleteOne();
       } catch (error) {
         throw new ApiError(httpStatus.BAD_GATEWAY, error.message);
@@ -155,7 +151,7 @@ const replaceFiles = async (userId, operations) => {
       };
 
       const sizeDiff = fileData.size - doc.size;
-      await syncStorage(userId, sizeDiff);
+      await userService.syncStorage(userId, sizeDiff);
 
       Object.assign(doc, payload);
 
@@ -240,7 +236,7 @@ const copyFiles = async (userId, operations) => {
         isLocked: false,
       };
 
-      await syncStorage(userId, file.size);
+      await userService.syncStorage(userId, file.size);
 
       return await fileModel.create(newFile);
     })

@@ -4,7 +4,6 @@ const catchAsync = require("../../utils/catchAsync");
 const pick = require("../../utils/pick");
 const fileService = require("./file.service");
 const ApiError = require("../../utils/ApiError");
-const { array } = require("joi");
 
 const uploadFiles = catchAsync(async (req, res) => {
   const files = req.files;
@@ -33,7 +32,7 @@ const queryFiles = catchAsync(async (req, res) => {
     "fileType",
     "maxSize",
     "minSize",
-    "path"
+    "path",
   ]);
   const options = pick(req.query, ["sortBy", "limit", "page"]);
   const result = await fileService.queryFiles(req.user.id, filter, options);
@@ -53,25 +52,28 @@ const deleteFiles = catchAsync(async (req, res) => {
     throw new ApiError(httpStatus.BAD_REQUEST, "No files to Delete.");
   }
 
-  await fileService.deleteFiles(req.user.id, files);
+  const result = await fileService.deleteFiles(req.user.id, files);
   res.status(httpStatus.OK).json(
     response({
       message: "Files Has Been Deleted",
       status: "OK",
       statusCode: httpStatus.OK,
-      data: {},
+      data: result,
     })
   );
 });
 
 const permanentDeleteFiles = catchAsync(async (req, res) => {
-  await fileService.permanentDeleteFiles(req.user.id, req.body.files);
+  const result = await fileService.permanentDeleteFiles(
+    req.user.id,
+    req.body.files
+  );
   res.status(httpStatus.OK).json(
     response({
       message: "Files Has Been Permanent Deleted",
       status: "OK",
       statusCode: httpStatus.OK,
-      data: {},
+      data: result,
     })
   );
 });

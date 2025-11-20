@@ -8,10 +8,38 @@ const router = express.Router();
 
 router
   .route("/")
+  .get(
+    auth("user"),
+    validate(folderValidation.getFolderContents),
+    folderController.getFolderContents
+  )
   .post(
     auth("user"),
     validate(folderValidation.createFolder),
-    folderController.createFolder
+    folderController.folderCreate
+  )
+  .patch(
+    auth("user"),
+    validate(folderValidation.renameFolder),
+    folderController.folderRename
+  )
+  .delete(
+    auth("user"),
+    validate(folderValidation.deleteFolder),
+    folderController.folderDelete
   );
+router.patch(
+  "/move",
+  auth("user"),
+  validate(folderValidation.moveFolder),
+  folderController.folderMove
+);
+
+router.delete(
+  "/permanent",
+  auth("user"),
+  validate(folderValidation.deleteFolder),
+  folderController.folderDeletePermanent
+);
 
 module.exports = router;

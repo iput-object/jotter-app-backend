@@ -106,6 +106,10 @@ const isUpdateUser = async (userId, updateBody) => {
   return user;
 };
 
+const syncStorage = async (userId, size) => {
+  await userModel.findByIdAndUpdate(userId, { $inc: { "storage.used": size } });
+};
+
 module.exports = {
   createUser,
   queryUsers,
@@ -114,4 +118,5 @@ module.exports = {
   updateUserById,
   deleteUserById,
   isUpdateUser,
+  syncStorage,
 };

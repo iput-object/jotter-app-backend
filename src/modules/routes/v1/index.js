@@ -4,6 +4,7 @@ const { userRoute } = require("../../user");
 const { infoRoute } = require("../../info");
 const { fileRoute } = require("../../file");
 const { folderRoute } = require("../../folder");
+const { trashRoute } = require("../../trash");
 
 const router = express.Router();
 
@@ -13,6 +14,7 @@ const defaultRoutes = [
   { path: "/settings", route: infoRoute },
   { path: "/files", route: fileRoute },
   { path: "/folders", route: folderRoute },
+  { path: "/trash", route: trashRoute },
 ];
 
 defaultRoutes.forEach(({ path, route }) => router.use(path, route));
