@@ -8,14 +8,23 @@ const favoriteSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
-
-    resourceId: { type: mongoose.Schema.Types.ObjectId, required: true },
-
-    resourceType: { type: String, enum: ["file", "folder"], required: true },
-
-    markedAt: { type: Date, default: Date.now },
+    resourceId: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+    },
+    resourceType: {
+      type: String,
+      enum: ["file", "folder"],
+      required: true,
+    },
+    markedAt: {
+      type: Date,
+      default: Date.now,
+    },
   },
-  { timestamps: false }
+  {
+    timestamps: true,
+  }
 );
 
 favoriteSchema.plugin(toJSON);

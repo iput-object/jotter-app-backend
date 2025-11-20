@@ -5,7 +5,7 @@ const response = require("../../config/response");
 const authService = require("./auth.service");
 const { userService } = require("../user");
 const { tokenService } = require("../token");
-const emailUtil = require("../../utils/email");
+const emailUtil = require("../../config/email");
 
 const register = catchAsync(async (req, res) => {
   const { email, name, ...rest } = req.body;

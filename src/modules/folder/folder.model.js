@@ -8,27 +8,43 @@ const folderSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
-
-    name: { type: String, required: true },
-
+    name: {
+      type: String,
+      required: true,
+    },
     parent: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Folder",
       default: null,
     },
-
-    path: { type: String, required: true },
-
-    isTrashed: { type: Boolean, default: false },
-    isLocked: { type: Boolean, default: false },
-
-    color: { type: String, default: null },
-
-    fileCount: { type: Number, default: 0 },
-
-    folderCount: { type: Number, default: 0 },
-
-    size: { type: Number, default: 0 },
+    path: {
+      type: String,
+      required: true,
+    },
+    isTrashed: {
+      type: Boolean,
+      default: false,
+    },
+    isLocked: {
+      type: Boolean,
+      default: false,
+    },
+    fileCount: {
+      type: Number,
+      default: 0,
+    },
+    folderCount: {
+      type: Number,
+      default: 0,
+    },
+    size: {
+      type: Number,
+      default: 0,
+    },
+    type: {
+      type: String,
+      default: "folder",
+    },
   },
   { timestamps: true }
 );

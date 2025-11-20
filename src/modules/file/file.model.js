@@ -8,30 +8,58 @@ const fileSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
-
-    parent: { type: mongoose.Schema.Types.ObjectId, ref: "Folder" },
-
-    name: { type: String, required: true },
-
-    originalName: { type: String, required: true },
-
-    path: { type: String, required: true },
-    
-    cloudPath: { type: String, required: true },
-
-    fileType: { type: String, required: true },
-
-    size: { type: Number, required: true },
-
-    isTrashed: { type: Boolean, default: false },
-
-    isLocked: { type: Boolean, default: false },
-
-    metadata: { type: Object, default: {} },
-
-    lastAccessedAt: { type: Date, default: null },
+    parent: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Folder",
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    originalName: {
+      type: String,
+      required: true,
+    },
+    path: {
+      type: String,
+      required: true,
+    },
+    cloudPath: {
+      type: String,
+      required: true,
+    },
+    fileType: {
+      type: String,
+      required: true,
+    },
+    size: {
+      type: Number,
+      required: true,
+    },
+    isTrashed: {
+      type: Boolean,
+      default: false,
+    },
+    isLocked: {
+      type: Boolean,
+      default: false,
+    },
+    metadata: {
+      type: Object,
+      default: {},
+    },
+    type: {
+      type: String,
+      default: "file",
+    },
+    lastAccessedAt: {
+      type: Date,
+      default: null,
+    },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+  }
 );
 
 fileSchema.plugin(toJSON);

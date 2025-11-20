@@ -1,6 +1,6 @@
 const httpStatus = require("http-status");
 const ApiError = require("../../utils/ApiError");
-const { sendEmailVerification } = require("../../utils/email");
+const { sendEmailVerification } = require("../../config/email");
 const unlinkImages = require("../../common/unlinkImage");
 const userModel = require("./user.model");
 

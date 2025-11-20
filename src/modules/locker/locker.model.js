@@ -9,19 +9,26 @@ const lockerSchema = new mongoose.Schema(
       required: true,
     },
 
-    folderId: { type: mongoose.Schema.Types.ObjectId, ref: "Folder" },
+    folder: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Folder",
+    },
 
-    pinHash: { type: String, required: true },
+    file: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "File",
+    },
 
-    securityQuestion: { type: String, required: true },
+    type: {
+      type: String,
+      enum: ["file", "folder"],
+      required: true,
+    },
 
-    securityAnswerHash: { type: String, required: true },
-
-    unlockAttempts: { type: Number, default: 0 },
-
-    lockedUntil: { type: Date, default: null },
-
-    lastUnlockAt: { type: Date, default: null },
+    lastUnlockAt: {
+      type: Date,
+      default: null,
+    },
   },
   { timestamps: true }
 );

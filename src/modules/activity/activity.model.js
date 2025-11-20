@@ -7,7 +7,6 @@ const activityLogSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
-
     action: {
       type: String,
       enum: [
@@ -21,18 +20,31 @@ const activityLogSchema = new mongoose.Schema(
       ],
       required: true,
     },
-
-    resourceId: { type: mongoose.Schema.Types.ObjectId, required: true },
-
-    resourceType: { type: String, enum: ["file", "folder"], required: true },
-
-    ipAddress: { type: String, default: null },
-
-    userAgent: { type: String, default: null },
-
-    metadata: { type: Object, default: {} },
+    resourceId: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+    },
+    resourceType: {
+      type: String,
+      enum: ["file", "folder"],
+      required: true,
+    },
+    ipAddress: {
+      type: String,
+      default: null,
+    },
+    userAgent: {
+      type: String,
+      default: null,
+    },
+    metadata: {
+      type: Object,
+      default: {},
+    },
   },
-  { timestamps: { createdAt: true, updatedAt: false } }
+  {
+    timestamps: true,
+  }
 );
 
 activityLogSchema.plugin(toJSON);
