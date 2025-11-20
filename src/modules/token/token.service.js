@@ -91,6 +91,26 @@ const generateAuthTokens = async (user, activityId) => {
   };
 };
 
+const generateLockerAuthTokens = async (user, activityId) => {
+  const accessTokenExpires = moment().add(
+    config.jwt.accessExpirationMinutes,
+    "minutes"
+  );
+  const accessToken = generateToken(
+    activityId,
+    user,
+    accessTokenExpires,
+    tokenTypes.ACCESS
+  );
+
+  return {
+    access: {
+      token: accessToken,
+      expires: accessTokenExpires.toDate(),
+    },
+  };
+};
+
 const generateResetPasswordToken = async (email) => {
   const user = await userService.getUserByEmail(email);
   if (!user) {
@@ -135,4 +155,5 @@ module.exports = {
   generateAuthTokens,
   generateResetPasswordToken,
   generateVerifyEmailToken,
+  generateLockerAuthTokens,
 };

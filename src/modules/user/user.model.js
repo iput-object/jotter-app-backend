@@ -6,14 +6,33 @@ const { roles } = require("../../config/roles");
 
 const lockerSchema = mongoose.Schema(
   {
-    password: {
+    securityQuestion: {
       type: String,
-      required: true,
+      default: null,
+    },
+    securityAnswer: {
+      type: String,
+      default: null,
+
+      trim: true,
+    },
+    pin: {
+      type: String,
+      default: null,
+
       trim: true,
     },
     isActive: {
       type: Boolean,
-      default: true,
+      default: false,
+    },
+    attempts: {
+      type: Number,
+      default: 0,
+    },
+    lockUntil: {
+      type: Date,
+      default: null,
     },
   },
   {
@@ -87,7 +106,10 @@ const userSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    locker: lockerSchema,
+    locker: {
+      type: lockerSchema,
+      default: () => ({}),
+    },
     storage: {
       total: {
         type: Number,
@@ -125,11 +147,30 @@ userSchema.methods.isPasswordMatch = async function (password) {
   return bcrypt.compare(password, user.password);
 };
 
+userSchema.methods.isLockerPinMatch = async function (pin) {
+  return bcrypt.compare(pin, this.locker.pin);
+};
+
+userSchema.methods.isLockerAnswerMatch = async function (answer) {
+  return bcrypt.compare(answer, this.locker.securityAnswer);
+};
+
 userSchema.pre("save", async function (next) {
   const user = this;
   if (user.isModified("password")) {
     user.password = await bcrypt.hash(user.password, 8);
   }
+  if (user.isModified("locker.securityAnswer") && user.locker.securityAnswer) {
+    user.locker.securityAnswer = await bcrypt.hash(
+      user.locker.securityAnswer,
+      8
+    );
+  }
+
+  if (user.isModified("locker.pin") && user.locker.pin) {
+    user.locker.pin = await bcrypt.hash(user.locker.pin, 8);
+  }
+
   next();
 });
 

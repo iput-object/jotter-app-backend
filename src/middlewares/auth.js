@@ -3,6 +3,7 @@ const httpStatus = require("http-status");
 const ApiError = require("../utils/ApiError");
 const { roleRights } = require("../config/roles");
 const jwt = require("jsonwebtoken");
+const config = require("../config/config");
 
 const verifyCallback =
   (req, resolve, reject, requiredRights) => async (err, user, info) => {
@@ -20,7 +21,7 @@ const verifyCallback =
     let decodedData;
     if (authorization && authorization.startsWith("Bearer")) {
       token = authorization.split(" ")[1];
-      decodedData = jwt.decode(token);
+      decodedData = jwt.verify(token, config.jwt.secret);
       activity = decodedData.activity;
     }
 
