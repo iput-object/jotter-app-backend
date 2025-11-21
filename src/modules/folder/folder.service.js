@@ -64,7 +64,7 @@ const hardDeleteTree = async (rootFolderId, extraQuery = {}) => {
     await fileModel.deleteMany(fileQuery);
     const folderQuery = { ...extraQuery, parent: currentParent };
     const childFolders = await folderModel.find(folderQuery);
-    queue.push(...childFolders.map(f => f._id));
+    queue.push(...childFolders.map((f) => f._id));
 
     await folderModel.deleteMany(folderQuery);
   }
@@ -94,7 +94,7 @@ const createFolder = async (userId, data) => {
     }
     relativePath = path.join(parentFolder.path, name);
   } else {
-    relativePath = name;
+    relativePath += name;
   }
 
   const existing = await folderModel.findOne({
@@ -158,9 +158,15 @@ const moveFolder = async (userId, data) => {
   if (!newParent) {
     throw new ApiError(httpStatus.NOT_FOUND, "New parent folder not found.");
   }
-
+  if (folder.parent) {
+    await syncFolderCount(folder.parent, -1);
+    await syncFolderSize(folder.parent, 0, -folder.size);
+  }
   folder.parent = newParentId;
   folder.path = path.join(newParent.path, folder.name);
+  await syncFolderCount(newParentId, 1);
+  await syncFolderSize(newParentId, 0, folder.size);
+
   return await folder.save();
 };
 

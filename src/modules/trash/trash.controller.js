@@ -50,13 +50,13 @@ const recoverTrashedItem = catchAsync(async (req, res) => {
 
 const permanentDelete = catchAsync(async (req, res) => {
   const items = req.body.items;
-  await trashService.permanentDelete(req.user.id, items);
+  const deletes = await trashService.permanentDelete(req.user.id, items);
   res.status(httpStatus.OK).json(
     response({
       message: "Items Permanently Deleted!",
       status: "OK",
       statusCode: httpStatus.OK,
-      data: {},
+      data: deletes,
     })
   );
 });

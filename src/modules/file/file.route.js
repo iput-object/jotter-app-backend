@@ -7,6 +7,19 @@ const fileValidation = require("./file.validation");
 
 const router = express.Router();
 
+router.patch(
+  "/move",
+  auth("user"),
+  validate(fileValidation.moveOrCopy),
+  fileController.moveFiles
+);
+router.patch(
+  "/copy",
+  auth("user"),
+  validate(fileValidation.moveOrCopy),
+  fileController.copyFiles
+);
+
 router
   .route("/")
   .post(
@@ -20,6 +33,7 @@ router
     validate(fileValidation.filesArray),
     fileController.deleteFiles
   );
+  
 router.get(
   "/query",
   auth("user"),
@@ -30,7 +44,7 @@ router.get(
 router.delete(
   "/permanent",
   auth("user"),
-  validate(fileValidation.paramFileId),
+  validate(fileValidation.filesArray),
   fileController.permanentDeleteFiles
 );
 
@@ -60,16 +74,5 @@ router.put(
   validate(fileValidation.uploadFile),
   fileController.replaceFiles
 );
-router.patch(
-  "/:fileId/copy",
-  auth("user"),
-  validate(fileValidation.moveOrCopy),
-  fileController.copyFiles
-);
-router.patch(
-  "/:fileId/move",
-  auth("user"),
-  validate(fileValidation.moveOrCopy),
-  fileController.moveFiles
-);
+
 module.exports = router;

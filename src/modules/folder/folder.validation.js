@@ -6,6 +6,10 @@ const getFolderContents = {
     name: Joi.string(),
     maxSize: Joi.number().min(0),
     minSize: Joi.number().min(0),
+    sortBy: Joi.string(),
+    limit: Joi.number(),
+    page: Joi.number(),
+    path: Joi.string(),
   }),
   body: Joi.object().keys({
     parentId: Joi.custom(objectId).allow(null),
@@ -38,10 +42,17 @@ const moveFolder = {
     newParentId: Joi.custom(objectId).allow(null),
   }),
 };
+
+const folderDetails = {
+  params: Joi.object().keys({
+    folderId: Joi.custom(objectId).required(),
+  }),
+};
 module.exports = {
   createFolder,
   renameFolder,
   deleteFolder,
   moveFolder,
   getFolderContents,
+  folderDetails
 };

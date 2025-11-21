@@ -35,6 +35,14 @@ router.patch(
   folderController.folderMove
 );
 
+router.get(
+  "/:folderId",
+  auth("user"),
+  validate(folderValidation.folderDetails),
+  folderController.getFolder
+);
+
+
 router.delete(
   "/permanent",
   auth("user"),

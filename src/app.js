@@ -67,7 +67,7 @@ app.get("/test", (req, res) => {
     req.headers["x-real-ip"] ||
     req.headers["x-forwarded-for"] ||
     req.connection.remoteAddress;
-  res.send({ message: "This is a Monolithic MVC API", userIP });
+  res.send({ message: "This is a Monolithic Modular API", userIP });
 });
 
 // send back a 404 error for any unknown api request

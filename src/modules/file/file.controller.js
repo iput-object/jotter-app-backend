@@ -139,11 +139,7 @@ const downloadFile = catchAsync(async (req, res) => {
 });
 
 const copyFiles = catchAsync(async (req, res) => {
-  const file = await fileService.copyFiles(
-    req.user.id,
-    req.params.fileId,
-    ...req.body
-  );
+  const file = await fileService.copyFiles(req.user.id, req.body);
   res.status(httpStatus.OK).json(
     response({
       message: "Files Has Been Copied",
@@ -155,11 +151,7 @@ const copyFiles = catchAsync(async (req, res) => {
 });
 
 const moveFiles = catchAsync(async (req, res) => {
-  const file = await fileService.moveFiles(
-    req.user.id,
-    req.params.fileId,
-    req.body.targetFolder
-  );
+  const file = await fileService.moveFiles(req.user.id, req.body);
   res.status(httpStatus.OK).json(
     response({
       message: "Files Has Been Moved",

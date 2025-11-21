@@ -29,7 +29,10 @@ const folderRename = catchAsync(async (req, res) => {
 });
 
 const folderDelete = catchAsync(async (req, res) => {
-  const folder = await folderService.deleteFolder(req.user.id, req.body);
+  const folder = await folderService.deleteFolder(
+    req.user.id,
+    req.body.folders
+  );
   res.status(httpStatus.OK).json(
     response({
       message: "Folder Deleted!",
@@ -52,8 +55,26 @@ const folderMove = catchAsync(async (req, res) => {
   );
 });
 
+const getFolder = catchAsync(async (req, res) => {
+  const folder = await folderService.getFolderById(
+    req.user.id,
+    req.params.folderId
+  );
+  res.status(httpStatus.OK).json(
+    response({
+      message: "Folder Details!",
+      status: "OK",
+      statusCode: httpStatus.OK,
+      data: folder,
+    })
+  );
+});
+
 const folderDeletePermanent = catchAsync(async (req, res) => {
-  const folder = await folderService.deleteFolderPermanent(req.user.id, req.body.folders);
+  const folder = await folderService.deleteFolderPermanent(
+    req.user.id,
+    req.body.folders
+  );
   res.status(httpStatus.OK).json(
     response({
       message: "Folder Deleted Permanently!",
@@ -90,4 +111,5 @@ module.exports = {
   folderDelete,
   folderDeletePermanent,
   folderMove,
+  getFolder,
 };

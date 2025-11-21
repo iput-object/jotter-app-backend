@@ -4,7 +4,7 @@ const { userService, userModel } = require("../user");
 const { fileService, fileModel } = require("../file");
 const { folderService, folderModel } = require("../folder");
 const lockerModel = require("./locker.model");
-
+const path = require("path");
 const createLockerDirectory = async (userId) => {
   let folder = await folderModel.findOne({
     userId,
@@ -14,7 +14,7 @@ const createLockerDirectory = async (userId) => {
   if (!folder) {
     folder = await folderModel.create({
       name: "Vault",
-      path: "Vault",
+      path: "/Vault",
       userId,
     });
   }
@@ -155,7 +155,7 @@ const removeFromLocker = async (userId, items) => {
           // Parent doesn't exist, create locker root dir
           parentObj = await createLockerDirectory(userId);
           file.parent = parentObj._id;
-          file.path = path.join(parentObj.path, folder.name);
+          file.path = path.join(parentObj.path, file.originalName);
           await file.save();
         }
 

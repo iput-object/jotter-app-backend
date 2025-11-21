@@ -43,12 +43,9 @@ const renameFile = {
 };
 
 const moveOrCopy = {
-  params: Joi.object().keys({
-    fileId: Joi.custom(objectId).required(),
-  }),
   body: Joi.object().keys({
+    files: Joi.array().items(Joi.custom(objectId)).required(),
     targetFolder: Joi.custom(objectId).required(),
-    name: Joi.string(),
   }),
 };
 module.exports = {

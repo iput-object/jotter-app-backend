@@ -13,7 +13,7 @@ const createTrashDirectory = async (userId) => {
   if (dir) return dir;
   const folder = folderModel.create({
     name: "Trash",
-    path: "Trash",
+    path: "/Trash",
     userId,
   });
   return folder;
@@ -70,7 +70,8 @@ const clearTrash = async (userId) => {
 const permanentDelete = async (userId, items) => {
   const result = await Promise.all(
     items.map(async (item) => {
-      if (item.type === "file") {
+      const isFolder = item.type && item.type === "folder";
+      if (!isFolder) {
         const fileItem = await fileModel.findOne({
           userId,
           _id: item.id,
@@ -79,6 +80,12 @@ const permanentDelete = async (userId, items) => {
         if (!fileItem) return { id: item.id, status: "not found" };
         await fileService.hardDeleteFile(fileItem);
       } else {
+        const folder = await folderModel.findOne({
+          userId,
+          _id: item.id,
+          isTrashed: true,
+        });
+        if (!folder) return { id: item.id, status: "not found" };
         await folderService.hardDeleteTree(item.id, {
           userId,
           isTrashed: true,
@@ -91,35 +98,31 @@ const permanentDelete = async (userId, items) => {
 };
 
 const recoverTrashedItem = async (userId, items) => {
-  const result = await Promise.all(
+  return Promise.all(
     items.map(async (item) => {
-      if (item.type === "folder") {
-        const folder = await folderModel.findById(item.id).populate("parent");
-        if (!folder) return { id: item.id, status: "Folder Not Found" };
-        folder.isTrashed = false;
-        if (folder.parent && folder.parent.isTrashed) {
-          const trashDir = await createTrashDirectory(userId);
-          folder.parent = trashDir._id;
-          folder.path = path.join(trashDir.path, folder.name);
-        }
-        await folder.save();
+      const isFolder = item.type === "folder";
+      const model = isFolder ? folderModel : fileModel;
+
+      let doc = await model
+        .findOne({ _id: item.id, userId })
+        .populate("parent");
+      if (!doc) return { id: item.id, status: "Not Found" };
+
+      doc.isTrashed = false;
+      if (!doc.parent || doc.parent.isTrashed) {
+        doc.parent = null;
+        doc.path = doc.name || doc.originalName;
       } else {
-        const file = await fileModel.findById(item.id).populate("parent");
-        if (!file) return { id: item.id, status: "File Not Found" };
-        file.isTrashed = false;
-        if (file.parent && file.parent.isTrashed) {
-          const trashDir = await createTrashDirectory(userId);
-          file.parent = trashDir._id;
-          file.path = path.join(trashDir.path, file.originalName);
-        }
-        await file.save();
+        doc.path = path.join(doc.parent.path, doc.name || doc.originalName);
       }
 
-      return { id: item.id, type: "Recovered SuccussFully" };
+      await doc.save();
+
+      return { id: item.id, status: "Recovered Successfully" };
     })
   );
-  return result;
 };
+
 module.exports = {
   getTrashedContents,
   clearTrash,

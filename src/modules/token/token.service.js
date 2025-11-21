@@ -21,8 +21,6 @@ const generateToken = (
     activity: activityId,
     type,
   };
-
-  // console.log("payload", payload);
   return jwt.sign(payload, secret);
 };
 

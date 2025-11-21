@@ -13,7 +13,7 @@ const setupLocker = catchAsync(async (req, res) => {
       message: "Locker setup successfully",
       status: "OK",
       statusCode: httpStatus.CREATED,
-      data: result,
+      data: {},
     })
   );
 });

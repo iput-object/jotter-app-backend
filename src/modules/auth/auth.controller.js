@@ -100,8 +100,8 @@ const logout = catchAsync(async (req, res) => {
 });
 
 const refreshTokens = catchAsync(async (req, res) => {
-  // const tokens = await authService.refreshAuth(req.body.refreshToken);
-  // res.send({ ...tokens });
+  const tokens = await authService.refreshAuth(req.body.refreshToken);
+  res.send({ ...tokens });
 });
 
 const forgotPassword = catchAsync(async (req, res) => {
@@ -197,7 +197,6 @@ const deleteMe = catchAsync(async (req, res) => {
   );
 });
 
-
 // Initiate Google OAuth (redirects to Google)
 const googleAuth = catchAsync(async (req, res, next) => {
   passport.authenticate("google", {
@@ -232,7 +231,9 @@ const googleCallback = catchAsync(async (req, res, next) => {
 
     res.status(httpStatus.OK).json(
       response({
-        message: isNewUser ? "Account created successfully" : "Login Successful",
+        message: isNewUser
+          ? "Account created successfully"
+          : "Login Successful",
         status: "OK",
         statusCode: httpStatus.OK,
         data: { user, tokens, isNewUser },
@@ -240,7 +241,6 @@ const googleCallback = catchAsync(async (req, res, next) => {
     );
   })(req, res, next);
 });
-
 
 module.exports = {
   register,
@@ -254,5 +254,5 @@ module.exports = {
   deleteMe,
   changePassword,
   googleAuth,
-  googleCallback
+  googleCallback,
 };
