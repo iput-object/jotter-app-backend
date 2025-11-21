@@ -65,6 +65,11 @@ const userSchema = mongoose.Schema(
       required: [true, "Image is must be Required"],
       default: "/uploads/users/user.png",
     },
+    googleId: {
+      type: String,
+      unique: true,
+      sparse: true,
+    },
     password: {
       type: String,
       required: false,

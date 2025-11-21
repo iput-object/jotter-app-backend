@@ -4,6 +4,8 @@ const { tokenTypes } = require("../../config/tokens");
 const { tokenService } = require("../token");
 const { userService } = require("../user");
 const { tokenModel } = require("../../modules/token");
+const { folderService } = require("../folder");
+const fs = require("../../utils/fs");
 
 const loginUserWithEmailAndPassword = async (email, password, fcmToken) => {
   const user = await userService?.getUserByEmail(email);
@@ -150,6 +152,10 @@ const deleteMe = async (password, reqUser) => {
   if (!(await user.isPasswordMatch(password))) {
     throw new ApiError(httpStatus.BAD_REQUEST, "Incorrect password");
   }
+  await folderService.hardDeleteTree(null, { userId: reqUser.id });
+  const rootPath = path.join(__dirname, "..", "..", "drive");
+  const uploadPath = path.join(rootPath, req.user.id);
+  fs.delFolder(uploadPath);
   user.isDeleted = true;
   await user.save();
   return user;

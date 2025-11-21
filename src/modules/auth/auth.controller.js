@@ -3,6 +3,7 @@ const catchAsync = require("../../utils/catchAsync");
 const ApiError = require("../../utils/ApiError");
 const response = require("../../config/response");
 const authService = require("./auth.service");
+const passport = require("passport");
 const { userService } = require("../user");
 const { tokenService } = require("../token");
 const emailUtil = require("../../config/email");
@@ -196,6 +197,51 @@ const deleteMe = catchAsync(async (req, res) => {
   );
 });
 
+
+// Initiate Google OAuth (redirects to Google)
+const googleAuth = catchAsync(async (req, res, next) => {
+  passport.authenticate("google", {
+    scope: ["profile", "email"],
+    session: false,
+  })(req, res, next);
+});
+
+// Google OAuth callback - returns JSON (not redirect)
+const googleCallback = catchAsync(async (req, res, next) => {
+  passport.authenticate("google", { session: false }, async (err, data) => {
+    if (err || !data) {
+      return res.status(httpStatus.UNAUTHORIZED).json(
+        response({
+          message: "Google authentication failed",
+          status: "ERROR",
+          statusCode: httpStatus.UNAUTHORIZED,
+          data: {},
+        })
+      );
+    }
+
+    const { user, isNewUser } = data;
+
+    // Update FCM token if provided
+    if (req.body.fcmToken) {
+      user.fcmToken = req.body.fcmToken;
+      await user.save();
+    }
+
+    const tokens = await tokenService.generateAuthTokens(user);
+
+    res.status(httpStatus.OK).json(
+      response({
+        message: isNewUser ? "Account created successfully" : "Login Successful",
+        status: "OK",
+        statusCode: httpStatus.OK,
+        data: { user, tokens, isNewUser },
+      })
+    );
+  })(req, res, next);
+});
+
+
 module.exports = {
   register,
   login,
@@ -207,4 +253,6 @@ module.exports = {
   verifyEmail,
   deleteMe,
   changePassword,
+  googleAuth,
+  googleCallback
 };

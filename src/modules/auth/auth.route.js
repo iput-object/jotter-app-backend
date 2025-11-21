@@ -55,4 +55,7 @@ router.post(
   authController.deleteMe
 );
 
+router.get("/google", authController.googleAuth);
+router.get("/google/callback", authController.googleCallback);
+
 module.exports = router;

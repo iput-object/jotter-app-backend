@@ -6,6 +6,7 @@ const { fileRoute } = require("../../file");
 const { folderRoute } = require("../../folder");
 const { trashRoute } = require("../../trash");
 const { lockerRoute } = require("../../locker");
+const { dashboardRoute } = require("../../dashboard");
 
 const router = express.Router();
 
@@ -17,6 +18,7 @@ const defaultRoutes = [
   { path: "/folders", route: folderRoute },
   { path: "/trash", route: trashRoute },
   { path: "/locker", route: lockerRoute },
+  { path: "/dashboard", route: dashboardRoute },
 ];
 
 defaultRoutes.forEach(({ path, route }) => router.use(path, route));
