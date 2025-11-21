@@ -1,5 +1,5 @@
-const { fileModel } = require("../file");
-const { folderModel } = require("../folder");
+const { fileModel, fileService } = require("../file");
+const { folderModel, folderService } = require("../folder");
 
 const paginateArray = require("../../utils/pagination");
 const fs = require("../../utils/fs");
@@ -77,10 +77,12 @@ const permanentDelete = async (userId, items) => {
           isTrashed: true,
         });
         if (!fileItem) return { id: item.id, status: "not found" };
-        await fs.delFile(fileItem.cloudPath);
-        await fileModel.deleteOne({ userId, _id: item.id, isTrashed: true });
+        await fileService.hardDeleteFile(fileItem);
       } else {
-        await folderModel.deleteOne({ userId, _id: item.id, isTrashed: true });
+        await folderService.hardDeleteTree(item.id, {
+          userId,
+          isTrashed: true,
+        });
       }
       return { id: item.id, status: "deleted" };
     })
@@ -93,26 +95,27 @@ const recoverTrashedItem = async (userId, items) => {
     items.map(async (item) => {
       if (item.type === "folder") {
         const folder = await folderModel.findById(item.id).populate("parent");
-        if (folder) {
-          folder.isTrashed = false;
-          if (folder.parent && folder.parent.isTrashed) {
-            folder.parent = (await createTrashDirectory(userId))._id;
-          }
-          await folder.save();
-          return { id: folder._id, files: "folder" };
+        if (!folder) return { id: item.id, status: "Folder Not Found" };
+        folder.isTrashed = false;
+        if (folder.parent && folder.parent.isTrashed) {
+          const trashDir = await createTrashDirectory(userId);
+          folder.parent = trashDir._id;
+          folder.path = path.join(trashDir.path, folder.name);
         }
+        await folder.save();
       } else {
         const file = await fileModel.findById(item.id).populate("parent");
-        if (file) {
-          file.isTrashed = false;
-          if (file.parent && file.parent.isTrashed) {
-            file.parent = (await createTrashDirectory(userId))._id;
-          }
-          await file.save();
-          return { id: file._id, type: "file" };
+        if (!file) return { id: item.id, status: "File Not Found" };
+        file.isTrashed = false;
+        if (file.parent && file.parent.isTrashed) {
+          const trashDir = await createTrashDirectory(userId);
+          file.parent = trashDir._id;
+          file.path = path.join(trashDir.path, file.originalName);
         }
+        await file.save();
       }
-      return { id: item.id, type: item.type, status: "not found" };
+
+      return { id: item.id, type: "Recovered SuccussFully" };
     })
   );
   return result;
