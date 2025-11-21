@@ -209,7 +209,7 @@ const deleteFilesPermanently = async (userId, items) => {
           isTrashed: false,
         });
       }
-
+      await lockerModel.deleteOne({ userId, _id: item });
       return {
         id: item,
         status: "Deleted Successfully",

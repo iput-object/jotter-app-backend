@@ -29,7 +29,11 @@ module.exports = () => {
         new ApiError(httpStatus.UNAUTHORIZED, "You are not authorized")
       );
     }
-    console.log("locker auth is working somehow");
+    if (!user.locker.isActive) {
+      return next(
+        new ApiError(httpStatus.UNAUTHORIZED, "Locker isn't Configured Yet!")
+      );
+    }
     next();
   };
 };
