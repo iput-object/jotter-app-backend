@@ -5,11 +5,19 @@ const { fileService, fileModel } = require("../file");
 const { folderService, folderModel } = require("../folder");
 const lockerModel = require("./locker.model");
 
-const createTrashDirectory = async (userId) => {
-  const folder = folderModel.create({
-    name: "Vault",
+const createLockerDirectory = async (userId) => {
+  let folder = await folderModel.findOne({
     userId,
+    parent: null,
+    name: "Vault",
   });
+  if (!folder) {
+    folder = await folderModel.create({
+      name: "Vault",
+      path: "Vault",
+      userId,
+    });
+  }
   return folder;
 };
 
@@ -132,25 +140,48 @@ const addItemToLocker = async (userId, items) => {
 
 const removeFromLocker = async (userId, items) => {
   const result = await Promise.all(
-    items.map(async (item) => {
-      const lockItem = await lockerModel.findOne({
-        userId,
-        _id: item,
-      });
-      if (!lockItem) return { id: item, status: "Locker item not found" };
+    items.map(async (itemId) => {
+      const lockItem = await lockerModel.findOne({ userId, _id: itemId });
+      if (!lockItem) return { id: itemId, status: "Locker item not found" };
+
+      let parentObj = null;
+
       if (lockItem.type === "file") {
-        await fileModel.findByIdAndUpdate(lockItem.file, {
-          isLocked: false,
-        });
+        const file = await fileModel.findById(lockItem.file);
+
+        if (!file) return { id: itemId, status: "File not found" };
+
+        if (!file.parent) {
+          // Parent doesn't exist, create locker root dir
+          parentObj = await createLockerDirectory(userId);
+          file.parent = parentObj._id;
+          file.path = path.join(parentObj.path, folder.name);
+          await file.save();
+        }
+
+        file.isLocked = false;
+        await file.save();
       } else {
-        await folderModel.findByIdAndUpdate(lockItem.folder, {
-          isLocked: false,
-        });
+        const folder = await folderModel.findById(lockItem.folder);
+
+        if (!folder) return { id: itemId, status: "Folder not found" };
+
+        if (!folder.parent) {
+          parentObj = await createLockerDirectory(userId);
+          folder.parent = parentObj._id;
+          folder.path = path.join(parentObj.path, folder.name);
+          await folder.save();
+        }
+
+        folder.isLocked = false;
       }
-      await lockerModel.deleteOne({ userId, _id: item });
-      return { id: item, status: "Unlocked Successfully" };
+
+      await lockerModel.deleteOne({ userId, _id: itemId });
+
+      return { id: itemId, status: "Unlocked Successfully" };
     })
   );
+
   return result;
 };
 
@@ -192,7 +223,6 @@ const getLockedContents = async (userId, parentId, options) => {
   const query = {
     userId,
   };
-
   if (parentId) {
     query.parent = parentId;
   }

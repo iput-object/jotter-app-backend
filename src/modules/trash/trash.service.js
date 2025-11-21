@@ -5,8 +5,15 @@ const paginateArray = require("../../utils/pagination");
 const fs = require("../../utils/fs");
 
 const createTrashDirectory = async (userId) => {
+  const dir = folderModel.findOne({
+    userId,
+    name: "Trash",
+    parent: null,
+  });
+  if (dir) return dir;
   const folder = folderModel.create({
     name: "Trash",
+    path: "Trash",
     userId,
   });
   return folder;
