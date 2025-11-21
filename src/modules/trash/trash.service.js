@@ -1,97 +1,96 @@
+const trashModel = require("./trash.model");
 const { fileModel, fileService } = require("../file");
 const { folderModel, folderService } = require("../folder");
+const path = require("path");
 
-const paginateArray = require("../../utils/pagination");
-const fs = require("../../utils/fs");
+const addToTrash = async (userId, resourcesId, isFile = true) => {
+  const model = isFile ? fileModel : folderModel;
+  const type = isFile ? "file" : "folder";
 
-const createTrashDirectory = async (userId) => {
-  const dir = folderModel.findOne({
+  const item = await model.findOne({
     userId,
-    name: "Trash",
-    parent: null,
+    _id: resourcesId,
+    isTrashed: false,
   });
-  if (dir) return dir;
-  const folder = folderModel.create({
-    name: "Trash",
-    path: "/Trash",
-    userId,
-  });
-  return folder;
-};
-
-const getTrashedContents = async (userId, parentId, filter, options) => {
-  const query = {
-    userId,
-    isTrashed: true,
-    isLocked: false,
-  };
-
-  if (parentId) query.parent = parentId;
-
-  if (filter.minSize || filter.maxSize) {
-    query.size = {};
-    if (filter.minSize !== "") query.size.$gte = filter.minSize;
-    if (filter.maxSize !== "") query.size.$lte = filter.maxSize;
-  }
-
-  // Loop through each filter field and add conditions if they exist
-  for (const key of Object.keys(filter)) {
-    if (key === "minSize" || key === "maxSize") continue;
-    if (key === "name" && filter[key] !== "") {
-      query[key] = { $regex: filter[key], $options: "i" }; // Case-insensitive regex search for name
-    } else if (filter[key] !== "") {
-      query[key] = filter[key];
+  if (!item)
+    return { success: false, id: resourcesId, status: `${type} not found.` };
+  if (item.parent) {
+    if (isFile) {
+      await folderService.syncFolderSize(item.parent, -1, -item.size);
+    } else {
+      await folderService.syncFolderCount(item.parent, -1, -item.size);
     }
   }
+  item.isTrashed = true;
+  await item.save();
+  await trashModel.create({
+    userId,
+    [type]: resourcesId,
+    type: type,
+  });
+  return {
+    success: true,
+    id: resourcesId,
+    status: `${type} added to the trash.`,
+  };
+};
 
-  const folders = await folderModel.find(query);
-  const files = await fileModel.find(query);
-  const foldersFormatted = folders.map((folder) => ({
-    ...folder.toObject(),
-    type: "folder",
-  }));
-  const filesFormatted = files.map((file) => ({
-    ...file.toObject(),
-    type: "file",
-  }));
-
-  const combinedResults = [...foldersFormatted, ...filesFormatted];
-
-  return paginateArray(combinedResults, options);
+const getTrashedContents = async (userId, options) => {
+  const query = {
+    userId,
+  };
+  options.populate = "file,folder";
+  if (!options.sortBy) options.sortBy = "createdAt:desc";
+  console.log(options);
+  return await trashModel.paginate(query, options);
 };
 
 const clearTrash = async (userId) => {
-  const fileItems = await fileModel.find({ userId, isTrashed: true });
-  await Promise.all(fileItems.map((file) => fs.delFile(file.cloudPath)));
-  await fileModel.deleteMany({ userId, isTrashed: true });
-  await folderModel.deleteMany({ userId, isTrashed: true });
+  const trashItems = await trashModel
+    .find()
+    .populate("file")
+    .populate("folder");
+  await Promise.all(
+    trashItems.map(async (item) => {
+      if (item.type === "file") {
+        const file = await fileModel.findOne({
+          userId,
+          _id: item.file,
+          isTrashed: true,
+        });
+
+        if (file) await fileService.hardDeleteFile(file);
+      } else {
+        await folderService.hardDeleteTree(item.folder, {
+          userId,
+        });
+      }
+      await trashModel.findByIdAndDelete(item._id);
+    })
+  );
 };
 
 const permanentDelete = async (userId, items) => {
   const result = await Promise.all(
     items.map(async (item) => {
-      const isFolder = item.type && item.type === "folder";
-      if (!isFolder) {
-        const fileItem = await fileModel.findOne({
+      const trashItem = await trashModel.findOne({ userId, _id: item });
+      if (trashItem.type === "file") {
+        const file = await fileModel.findOne({
           userId,
-          _id: item.id,
+          _id: trashItem.file,
           isTrashed: true,
         });
-        if (!fileItem) return { id: item.id, status: "not found" };
-        await fileService.hardDeleteFile(fileItem);
+        await fileService.hardDeleteFile(file);
       } else {
-        const folder = await folderModel.findOne({
+        await folderService.hardDeleteTree(trashItem.folder, {
           userId,
-          _id: item.id,
-          isTrashed: true,
-        });
-        if (!folder) return { id: item.id, status: "not found" };
-        await folderService.hardDeleteTree(item.id, {
-          userId,
-          isTrashed: true,
         });
       }
-      return { id: item.id, status: "deleted" };
+      return {
+        success: true,
+        id: item,
+        status: "Item Deleted from Trash",
+      };
     })
   );
   return result;
@@ -100,25 +99,44 @@ const permanentDelete = async (userId, items) => {
 const recoverTrashedItem = async (userId, items) => {
   return Promise.all(
     items.map(async (item) => {
-      const isFolder = item.type === "folder";
-      const model = isFolder ? folderModel : fileModel;
-
-      let doc = await model
-        .findOne({ _id: item.id, userId })
-        .populate("parent");
-      if (!doc) return { id: item.id, status: "Not Found" };
-
-      doc.isTrashed = false;
-      if (!doc.parent || doc.parent.isTrashed) {
-        doc.parent = null;
-        doc.path = doc.name || doc.originalName;
+      const trashItem = await trashModel.findOne({ userId, _id: item });
+      let model;
+      if (trashItem.type === "file") {
+        model = await fileModel
+          .findOne({
+            userId,
+            _id: trashItem.file,
+            isTrashed: true,
+          })
+          .populate("parent");
       } else {
-        doc.path = path.join(doc.parent.path, doc.name || doc.originalName);
+        model = await folderModel
+          .findOne({
+            userId,
+            _id: trashItem.folder,
+            isTrashed: true,
+          })
+          .populate("parent");
       }
 
-      await doc.save();
+      model.isTrashed = false;
+      if (!model.parent || model.parent.isTrashed) {
+        model.parent = null;
+        model.path = model.originalName || model.name;
+      } else {
+        model.path = path.join(
+          model.parent.path,
+          model.originalName || model.name
+        );
+      }
 
-      return { id: item.id, status: "Recovered Successfully" };
+      await model.save();
+      await trashModel.findByIdAndDelete(item);
+      return {
+        success: true,
+        id: item,
+        status: "Item Recovered from Trash",
+      };
     })
   );
 };
@@ -128,4 +146,5 @@ module.exports = {
   clearTrash,
   recoverTrashedItem,
   permanentDelete,
+  addToTrash,
 };

@@ -24,7 +24,7 @@ const toJSON = (schema) => {
     transform(doc, ret, options) {
       Object.keys(schema.paths).forEach((path) => {
         if (schema.paths[path].options && schema.paths[path].options.private) {
-          deleteAtPath(ret, path.split('.'), 0);
+          deleteAtPath(ret, path.split("."), 0);
         }
       });
 
@@ -39,7 +39,8 @@ const toJSON = (schema) => {
       delete ret.isResetPassword;
       delete ret.securitySettings;
       delete ret.updatedAt;
-      // delete ret.createdAt;
+      delete ret.securityAnswer;
+      delete ret.pin;
       if (transform) {
         return transform(doc, ret, options);
       }

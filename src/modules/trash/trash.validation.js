@@ -7,25 +7,14 @@ const getTrashContents = {
     maxSize: Joi.number().min(0),
     minSize: Joi.number().min(0),
   }),
-  body: Joi.object().keys({
-    parentId: Joi.custom(objectId).allow(null),
-  }),
 };
 
 const recoverTrashedItem = {
   body: Joi.object().keys({
-    items: Joi.array()
-      .items(
-        Joi.object().keys({
-          id: Joi.custom(objectId).required(),
-          type: Joi.string().valid("file", "folder").required(),
-        })
-      )
-      .required(),
+    items: Joi.array().items(Joi.custom(objectId).required()).required(),
   }),
 };
 module.exports = {
   getTrashContents,
   recoverTrashedItem,
-  
 };

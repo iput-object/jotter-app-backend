@@ -63,11 +63,7 @@ const loginLocker = async (userId, pin) => {
 };
 
 const getLockerDetails = async (userId) => {
-  // Include locker but exclude nested fields
-  return await userModel.findById(userId).select({
-    "locker.pin": 0,
-    "locker.securityAnswer": 0,
-  });
+  return await userModel.findById(userId);
 };
 
 const modifyLocker = async (userId, lockerBody) => {

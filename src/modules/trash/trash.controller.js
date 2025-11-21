@@ -5,14 +5,8 @@ const trashService = require("./trash.service");
 const pick = require("../../utils/pick");
 
 const getTrashContents = catchAsync(async (req, res) => {
-  const filter = pick(req.query, ["name", "maxSize", "minSize"]);
   const options = pick(req.query, ["sortBy", "limit", "page"]);
-  const result = await trashService.getTrashedContents(
-    req.user.id,
-    req.body.parentId,
-    filter,
-    options
-  );
+  const result = await trashService.getTrashedContents(req.user.id, options);
   res.status(httpStatus.OK).json(
     response({
       message: "Trash Contents Retrieved!",

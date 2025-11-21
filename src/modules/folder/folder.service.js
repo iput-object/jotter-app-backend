@@ -8,16 +8,28 @@ const { userService } = require("../user");
 const fs = require("../../utils/fs");
 const paginateArray = require("../../utils/pagination");
 
-const syncFolderCount = async (folderId, increment) => {
-  await folderModel.findByIdAndUpdate(folderId, {
-    $inc: { folderCount: increment },
-  });
+const syncFolderCount = async (folderId, increment, size = 0) => {
+  if (!folderId) return;
+  const folder = await folderModel.findByIdAndUpdate(
+    folderId,
+    { $inc: { size: size, folderCount: increment } },
+    { new: true }
+  );
+  if (folder && folder.parent) {
+    await syncFolderCount(folder.parent, 0, size);
+  }
 };
 
-const syncFolderSize = async (folderId, count = 1, size) => {
-  await folderModel.findByIdAndUpdate(folderId, {
-    $inc: { size: size, fileCount: count },
-  });
+const syncFolderSize = async (folderId, count = 1, size = 0) => {
+  if (!folderId) return;
+  const folder = await folderModel.findByIdAndUpdate(
+    folderId,
+    { $inc: { size: size, fileCount: count } },
+    { new: true }
+  );
+  if (folder && folder.parent) {
+    await syncFolderSize(folder.parent, 0, size);
+  }
 };
 
 const softDeleteTree = async (userId, rootFolderId) => {
@@ -133,16 +145,10 @@ const renameFolder = async (userId, data) => {
 };
 
 const deleteFolder = async (userId, folders) => {
+  const { addToTrash } = require("../trash/trash.service");
   const result = await Promise.all(
     folders.map(async (folderId) => {
-      const folder = await getFolderById(userId, folderId);
-      if (!folder) return { folderId, status: "Folder not found" };
-      await softDeleteTree(userId, folderId);
-      if (folder.parent) {
-        await syncFolderCount(folder.parent, -1);
-        await syncFolderSize(folder.parent, 0, -folder.size);
-      }
-      return { folderId, status: "Folder deleted" };
+      return await addToTrash(userId, folderId, false);
     })
   );
   return result;

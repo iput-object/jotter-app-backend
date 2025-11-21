@@ -534,8 +534,11 @@
 									}
 								}
 							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
 							"request": {
-								"method": "POST",
+								"method": "GET",
 								"header": [
 									{
 										"key": "Content-Type",
@@ -547,18 +550,136 @@
 									"raw": "{\n  \"email\": \"motin.isalive@gmail.com\",\n  \"password\": \"1qazxsw2\"\n}"
 								},
 								"url": {
-									"raw": "{{base_url}}/auth/login",
+									"raw": "{{base_url}}/auth/google",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"auth",
-										"login"
+										"google"
 									]
 								},
 								"description": "Login with email and password"
 							},
-							"response": []
+							"response": [
+								{
+									"name": "SUCCESS",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"motin.isalive@gmail.com\",\n  \"password\": \"1qazxsw2\"\n}"
+										},
+										"url": {
+											"raw": "{{base_url}}/auth/login",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"auth",
+												"login"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Content-Security-Policy",
+											"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"427-OxHjcmHMofDhuMJR+euFVhz/WWw\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Content-Encoding",
+											"value": "br"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 21 Nov 2025 12:18:57 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"code\": 200,\n    \"message\": \"Login Successful\",\n    \"data\": {\n        \"attributes\": {\n            \"user\": {\n                \"storage\": {\n                    \"total\": 17179869184,\n                    \"used\": 0\n                },\n                \"name\": \"John Doe\",\n                \"email\": \"motin.isalive@gmail.com\",\n                \"avatar\": \"/uploads/users/user.png\",\n                \"role\": \"user\",\n                \"locker\": {\n                    \"securityQuestion\": null,\n                    \"securityAnswer\": null,\n                    \"pin\": null,\n                    \"isActive\": false,\n                    \"attempts\": 0,\n                    \"lockUntil\": null,\n                    \"_id\": \"6920585c908da6db4ba621a1\",\n                    \"createdAt\": \"2025-11-21T12:17:32.313Z\",\n                    \"updatedAt\": \"2025-11-21T12:17:32.313Z\"\n                },\n                \"createdAt\": \"2025-11-21T12:17:32.315Z\",\n                \"id\": \"6920585c908da6db4ba621a0\"\n            },\n            \"tokens\": {\n                \"access\": {\n                    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OTIwNTg1YzkwOGRhNmRiNGJhNjIxYTAiLCJpYXQiOjE3NjM3Mjc1MzcsImV4cCI6MTc2NzI5MTI2NDY3NCwidHlwZSI6ImFjY2VzcyJ9.ONppFmbXJFqhKVK72ZMVzv16480ZVgwsV6NB-bYUAhw\",\n                    \"expires\": \"2025-12-12T08:18:57.137Z\"\n                },\n                \"refresh\": {\n                    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyMTA4LTAxLTExVDEyOjE4OjU3LjEzN1oiLCJpYXQiOjE3NjM3Mjc1MzcsImV4cCI6MTc2MzcyNzUzNywiYWN0aXZpdHkiOiI2OTIwNTg1YzkwOGRhNmRiNGJhNjIxYTAifQ.s4YAzIKCct6wNuzKthr_AlJiHzBqkEMk59j6YFT9TXg\",\n                    \"expires\": \"2108-01-11T12:18:57.137Z\"\n                }\n            }\n        }\n    }\n}"
+								}
+							]
 						},
 						{
 							"name": "Forgot Password",
@@ -1864,7 +1985,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"name\": \"Media\",\n    \"parent\": \"69205f41c4511319dc6af26d\"\n}"
+									"raw": "{\n    \"name\": \"Zip File\",\n    \"parent\": \"6920c1543a2e0023ab46e5d9\"\n}"
 								},
 								"url": {
 									"raw": "{{base_url}}/folders",
@@ -2100,6 +2221,118 @@
 									],
 									"cookie": [],
 									"body": "{\n    \"code\": 200,\n    \"message\": \"Folder Created!\",\n    \"data\": {\n        \"attributes\": {\n            \"userId\": \"6920585c908da6db4ba621a0\",\n            \"name\": \"Media\",\n            \"parent\": \"69205f41c4511319dc6af26d\",\n            \"path\": \"/Media/Media\",\n            \"isTrashed\": false,\n            \"isLocked\": false,\n            \"fileCount\": 0,\n            \"folderCount\": 0,\n            \"size\": 0,\n            \"type\": \"folder\",\n            \"createdAt\": \"2025-11-21T12:48:20.711Z\",\n            \"id\": \"69205f94c4511319dc6af273\"\n        }\n    }\n}"
+								},
+								{
+									"name": "Create Folder",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"Zip File\",\n    \"parent\": \"6920c1543a2e0023ab46e5d9\"\n}"
+										},
+										"url": {
+											"raw": "{{base_url}}/folders",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"folders"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "",
+									"header": [
+										{
+											"key": "Content-Security-Policy",
+											"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "346"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"15a-qypWlgfUO+XBGlLpKEz1w490puE\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 21 Nov 2025 19:49:28 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"code\": 200,\n    \"message\": \"Folder Created!\",\n    \"data\": {\n        \"attributes\": {\n            \"userId\": \"6920c0371faade3eb0dd3aa8\",\n            \"name\": \"Zip File\",\n            \"parent\": \"6920c1543a2e0023ab46e5d9\",\n            \"path\": \"/Experiments/Zip File\",\n            \"isTrashed\": false,\n            \"isLocked\": false,\n            \"fileCount\": 0,\n            \"folderCount\": 0,\n            \"size\": 0,\n            \"type\": \"folder\",\n            \"createdAt\": \"2025-11-21T19:49:28.032Z\",\n            \"id\": \"6920c248c844d6d92c305d06\"\n        }\n    }\n}"
 								}
 							]
 						},
@@ -2833,7 +3066,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"folders\": [\"691f0c47ee903807840065bf\"]\n}",
+									"raw": "{\n    \"folders\": [\"6920c1543a2e0023ab46e5d9\"]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2841,13 +3074,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/folders/permanent",
+									"raw": "{{base_url}}/folders",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
-										"folders",
-										"permanent"
+										"folders"
 									]
 								}
 							},
@@ -2963,6 +3195,118 @@
 									],
 									"cookie": [],
 									"body": "{\n    \"code\": 200,\n    \"message\": \"Folder Deleted!\",\n    \"data\": {\n        \"attributes\": [\n            {\n                \"folderId\": \"69205f11c4511319dc6af262\",\n                \"status\": \"Folder deleted\"\n            }\n        ]\n    }\n}"
+								},
+								{
+									"name": "Delete Folder",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"folders\": [\"6920c1543a2e0023ab46e5d9\"]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/folders",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"folders"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "",
+									"header": [
+										{
+											"key": "Content-Security-Policy",
+											"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "151"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"97-dKBNcEpUyIgE5gB5qYtLOJthT64\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 21 Nov 2025 19:55:40 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"code\": 200,\n    \"message\": \"Folder Deleted!\",\n    \"data\": {\n        \"attributes\": [\n            {\n                \"success\": true,\n                \"id\": \"6920c1543a2e0023ab46e5d9\",\n                \"status\": \"folder added to the trash.\"\n            }\n        ]\n    }\n}"
 								}
 							]
 						},
@@ -3145,7 +3489,7 @@
 										},
 										{
 											"key": "folderId",
-											"value": "69205f11c4511319dc6af262",
+											"value": "6920c248c844d6d92c305d06",
 											"type": "text"
 										}
 									]
@@ -3420,6 +3764,124 @@
 									],
 									"cookie": [],
 									"body": "{\n    \"code\": 200,\n    \"message\": \"Files Has Been Uploaded\",\n    \"data\": {\n        \"attributes\": [\n            {\n                \"userId\": \"6920585c908da6db4ba621a0\",\n                \"parent\": \"69205f11c4511319dc6af262\",\n                \"name\": \"aaaa-1763729930186-847958745.zip\",\n                \"originalName\": \"aaaa.zip\",\n                \"path\": \"/Funny Video/aaaa.zip\",\n                \"cloudPath\": \"/home/iput-object/EMPIRE/web-jects/jotter-app-backend/drive/6920585c908da6db4ba621a0/aaaa-1763729930186-847958745.zip\",\n                \"fileType\": \"application/zip\",\n                \"size\": 900054304,\n                \"isTrashed\": false,\n                \"isLocked\": false,\n                \"metadata\": {\n                    \"encoding\": \"7bit\",\n                    \"fieldname\": \"files\"\n                },\n                \"type\": \"file\",\n                \"lastAccessedAt\": null,\n                \"createdAt\": \"2025-11-21T12:59:04.373Z\",\n                \"id\": \"69206218c4511319dc6af28d\"\n            }\n        ]\n    }\n}"
+								},
+								{
+									"name": "Upload File/s",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "files",
+													"type": "file",
+													"src": "/home/iput-object/aaaa.zip"
+												},
+												{
+													"key": "folderId",
+													"value": "6920c248c844d6d92c305d06",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{base_url}}/files",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"files"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "",
+									"header": [
+										{
+											"key": "Content-Security-Policy",
+											"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "625"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"271-Vbd86HFQl1pqzXqUPzfG5ld/B/s\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 21 Nov 2025 19:52:44 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"code\": 200,\n    \"message\": \"Files Has Been Uploaded\",\n    \"data\": {\n        \"attributes\": [\n            {\n                \"userId\": \"6920c0371faade3eb0dd3aa8\",\n                \"parent\": \"6920c248c844d6d92c305d06\",\n                \"name\": \"aaaa-1763754743363-773326923.zip\",\n                \"originalName\": \"aaaa.zip\",\n                \"path\": \"/Experiments/Zip File/aaaa.zip\",\n                \"cloudPath\": \"/home/iput-object/EMPIRE/web-jects/jotter-app-backend/drive/6920c0371faade3eb0dd3aa8/aaaa-1763754743363-773326923.zip\",\n                \"fileType\": \"application/zip\",\n                \"size\": 900054304,\n                \"isTrashed\": false,\n                \"isLocked\": false,\n                \"metadata\": {\n                    \"encoding\": \"7bit\",\n                    \"fieldname\": \"files\"\n                },\n                \"type\": \"file\",\n                \"lastAccessedAt\": null,\n                \"createdAt\": \"2025-11-21T19:52:44.049Z\",\n                \"id\": \"6920c30c554a93359f3b7162\"\n            }\n        ]\n    }\n}"
 								}
 							]
 						},
@@ -3452,7 +3914,7 @@
 									"query": [
 										{
 											"key": "originalName",
-											"value": null,
+											"value": "wallpaperflare",
 											"disabled": true
 										},
 										{
@@ -3672,7 +4134,7 @@
 									"variable": [
 										{
 											"key": "fileId",
-											"value": "691f116fbb976e4dbe7521d9"
+											"value": "692060dbc4511319dc6af27d"
 										}
 									]
 								}
@@ -3802,7 +4264,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"name\": \"renamed_file.sh\"\n}"
+									"raw": "{\n  \"name\": \"Wallpaper2.jpg\"\n}"
 								},
 								"url": {
 									"raw": "{{base_url}}/files/:fileId",
@@ -3816,7 +4278,7 @@
 									"variable": [
 										{
 											"key": "fileId",
-											"value": "691cde3e225f7e432145b12f"
+											"value": "692060dbc4511319dc6af27d"
 										}
 									]
 								}
@@ -3955,7 +4417,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"files\": [\n        \"692060dbc4511319dc6af27d\"\n    ],\n    \"targetFolder\": \"69205f24c4511319dc6af266\"\n}"
+									"raw": "{\n    \"files\": [\n        \"69206218c4511319dc6af28d\"\n    ],\n    \"targetFolder\": \"6920becc6d4382a3f2ef8bc9\"\n}"
 								},
 								"url": {
 									"raw": "{{base_url}}/files/move",
@@ -3996,7 +4458,7 @@
 									},
 									"status": "OK",
 									"code": 200,
-									"_postman_previewlanguage": "",
+									"_postman_previewlanguage": null,
 									"header": [
 										{
 											"key": "Content-Security-Policy",
@@ -4081,6 +4543,119 @@
 									],
 									"cookie": [],
 									"body": "{\n    \"code\": 200,\n    \"message\": \"Files Has Been Moved\",\n    \"data\": {\n        \"attributes\": [\n            {\n                \"userId\": \"6920585c908da6db4ba621a0\",\n                \"parent\": \"69205f24c4511319dc6af266\",\n                \"name\": \"wallpaperflare.com_wallpaper-1763729627454-142616547.jpg\",\n                \"originalName\": \"Wallpaper2.jpg\",\n                \"path\": \"/Documents/Wallpaper2.jpg\",\n                \"cloudPath\": \"/home/iput-object/EMPIRE/web-jects/jotter-app-backend/drive/6920585c908da6db4ba621a0/wallpaperflare.com_wallpaper-1763729627454-142616547.jpg\",\n                \"fileType\": \"image/jpeg\",\n                \"size\": 750391,\n                \"isTrashed\": false,\n                \"isLocked\": false,\n                \"metadata\": {\n                    \"encoding\": \"7bit\",\n                    \"fieldname\": \"files\"\n                },\n                \"type\": \"file\",\n                \"lastAccessedAt\": null,\n                \"createdAt\": \"2025-11-21T12:53:47.472Z\",\n                \"id\": \"692060dbc4511319dc6af27d\"\n            }\n        ]\n    }\n}"
+								},
+								{
+									"name": "Move File/s",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"files\": [\n        \"69206218c4511319dc6af28d\"\n    ],\n    \"targetFolder\": \"6920becc6d4382a3f2ef8bc9\"\n}"
+										},
+										"url": {
+											"raw": "{{base_url}}/files/move",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"files",
+												"move"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "",
+									"header": [
+										{
+											"key": "Content-Security-Policy",
+											"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "618"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"26a-kATbIQBa4hF30aCbS3Uvrw12dvc\""
+										},
+										{
+											"key": "Vary",
+											"value": "Accept-Encoding"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 21 Nov 2025 19:34:49 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"code\": 200,\n    \"message\": \"Files Has Been Moved\",\n    \"data\": {\n        \"attributes\": [\n            {\n                \"userId\": \"6920585c908da6db4ba621a0\",\n                \"parent\": \"6920becc6d4382a3f2ef8bc9\",\n                \"name\": \"aaaa-1763729930186-847958745.zip\",\n                \"originalName\": \"aaaa.zip\",\n                \"path\": \"/Test/Test Nested/aaaa.zip\",\n                \"cloudPath\": \"/home/iput-object/EMPIRE/web-jects/jotter-app-backend/drive/6920585c908da6db4ba621a0/aaaa-1763729930186-847958745.zip\",\n                \"fileType\": \"application/zip\",\n                \"size\": 900054304,\n                \"isTrashed\": false,\n                \"isLocked\": false,\n                \"metadata\": {\n                    \"encoding\": \"7bit\",\n                    \"fieldname\": \"files\"\n                },\n                \"type\": \"file\",\n                \"lastAccessedAt\": null,\n                \"createdAt\": \"2025-11-21T12:59:04.373Z\",\n                \"id\": \"69206218c4511319dc6af28d\"\n            }\n        ]\n    }\n}"
 								}
 							]
 						},
@@ -4096,7 +4671,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"files\":[\"\",\"\"],\n    \"targetFolder\": \"{{folder_id}}\"\n}"
+									"raw": "{\n    \"files\": [\n        \"692060dbc4511319dc6af27d\"\n    ],\n    \"targetFolder\": \"69205f24c4511319dc6af266\"\n}"
 								},
 								"url": {
 									"raw": "{{base_url}}/files/copy",
@@ -4137,7 +4712,7 @@
 									},
 									"status": "OK",
 									"code": 200,
-									"_postman_previewlanguage": "",
+									"_postman_previewlanguage": null,
 									"header": [
 										{
 											"key": "Content-Security-Policy",
@@ -4243,7 +4818,7 @@
 									"variable": [
 										{
 											"key": "fileId",
-											"value": "691cdaa9749aa0a008f28359"
+											"value": "692060dbc4511319dc6af27f"
 										}
 									]
 								}
@@ -4274,7 +4849,7 @@
 									},
 									"status": "OK",
 									"code": 200,
-									"_postman_previewlanguage": "",
+									"_postman_previewlanguage": null,
 									"header": [
 										{
 											"key": "Content-Security-Policy",
@@ -4391,9 +4966,14 @@
 									"mode": "formdata",
 									"formdata": [
 										{
-											"key": "ss",
+											"key": "692060dbc4511319dc6af27f",
 											"type": "file",
-											"src": "/home/iput-object/EMPIRE/web-jects/jotter-app-backend/ecosystem.config.json"
+											"src": "/home/iput-object/EMPIRE/web-jects/jotter-app-backend/package.json"
+										},
+										{
+											"key": "692060dbc4511319dc6af27f",
+											"type": "file",
+											"src": []
 										}
 									]
 								},
@@ -4437,7 +5017,7 @@
 									},
 									"status": "OK",
 									"code": 200,
-									"_postman_previewlanguage": "",
+									"_postman_previewlanguage": null,
 									"header": [
 										{
 											"key": "Content-Security-Policy",
@@ -4532,7 +5112,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"files\":[\"691f116fbb976e4dbe7521d9\" ]\n}",
+									"raw": "{\n    \"files\":[\"692060dbc4511319dc6af27f\" ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -4557,7 +5137,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"files\":[\"691f116fbb976e4dbe7521d9\" ]\n}",
+											"raw": "{\n    \"files\":[\"692080084cd6603612200165\", \"\" ]\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -4659,7 +5239,13 @@
 											"value": "timeout=5"
 										}
 									],
-									"cookie": [],
+									"cookie": [
+										{
+											"expires": "Invalid Date",
+											"domain": "",
+											"path": ""
+										}
+									],
 									"body": "{\n    \"code\": 200,\n    \"message\": \"Files Has Been Deleted\",\n    \"data\": {\n        \"attributes\": [\n            {\n                \"id\": \"691f116fbb976e4dbe7521d9\",\n                \"status\": \"File not found\"\n            }\n        ]\n    }\n}"
 								}
 							]
@@ -4669,21 +5255,23 @@
 							"request": {
 								"method": "DELETE",
 								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"files\":[\"692080084cd6603612200165\" ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
 								"url": {
-									"raw": "{{base_url}}/files/:fileId/permanent",
+									"raw": "{{base_url}}/files/permanent",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
 										"files",
-										":fileId",
 										"permanent"
-									],
-									"variable": [
-										{
-											"key": "fileId",
-											"value": "691cb7ee935a212bf188765b"
-										}
 									]
 								}
 							},
@@ -4715,7 +5303,7 @@
 									},
 									"status": "OK",
 									"code": 200,
-									"_postman_previewlanguage": "",
+									"_postman_previewlanguage": null,
 									"header": [
 										{
 											"key": "Content-Security-Policy",
@@ -4864,7 +5452,7 @@
 											},
 											"status": "Created",
 											"code": 201,
-											"_postman_previewlanguage": "",
+											"_postman_previewlanguage": null,
 											"header": [
 												{
 													"key": "Content-Security-Policy",
@@ -5020,7 +5608,7 @@
 											},
 											"status": "OK",
 											"code": 200,
-											"_postman_previewlanguage": "",
+											"_postman_previewlanguage": null,
 											"header": [
 												{
 													"key": "Content-Security-Policy",
@@ -5187,7 +5775,7 @@
 											},
 											"status": "OK",
 											"code": 200,
-											"_postman_previewlanguage": "",
+											"_postman_previewlanguage": null,
 											"header": [
 												{
 													"key": "Content-Security-Policy",
@@ -5353,7 +5941,7 @@
 											},
 											"status": "OK",
 											"code": 200,
-											"_postman_previewlanguage": "",
+											"_postman_previewlanguage": null,
 											"header": [
 												{
 													"key": "Content-Security-Policy",
@@ -5503,7 +6091,7 @@
 											},
 											"status": "OK",
 											"code": 200,
-											"_postman_previewlanguage": "",
+											"_postman_previewlanguage": null,
 											"header": [
 												{
 													"key": "Content-Security-Policy",
@@ -5613,7 +6201,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"items\": [\n        {\n            \"id\": \"691fe7cfb7193a1c0615ee03\",\n            \"type\": \"file\"\n        },\n        {\n            \"id\": \"691feae1bacc6d87f59029ae\",\n            \"type\": \"folder\"\n        }\n    ]\n}"
+											"raw": "{\n    \"items\": [\n        {\n            \"id\": \"692060dbc4511319dc6af27f\",\n            \"type\": \"file\"\n        },\n        {\n            \"id\": \"6920c1543a2e0023ab46e5d9\",\n            \"type\": \"folder\"\n        }\n    ]\n}"
 										},
 										"url": {
 											"raw": "{{base_url}}/locker/files",
@@ -5659,7 +6247,7 @@
 											},
 											"status": "Created",
 											"code": 201,
-											"_postman_previewlanguage": "",
+											"_postman_previewlanguage": null,
 											"header": [
 												{
 													"key": "Content-Security-Policy",
@@ -5744,6 +6332,124 @@
 											],
 											"cookie": [],
 											"body": "{\n    \"code\": 201,\n    \"message\": \"Item added to locker\",\n    \"data\": {\n        \"attributes\": [\n            {\n                \"id\": \"692060dbc4511319dc6af27f\",\n                \"status\": \"Locked Successfully\"\n            },\n            {\n                \"id\": \"691feae1bacc6d87f59029ae\",\n                \"status\": \"folder not found\"\n            }\n        ]\n    }\n}"
+										},
+										{
+											"name": "Add Files/Folders to locker",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "lockerAuthorization",
+														"value": "{{lockerAuth}}",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"items\": [\n        {\n            \"id\": \"692060dbc4511319dc6af27f\",\n            \"type\": \"file\"\n        },\n        {\n            \"id\": \"6920c1543a2e0023ab46e5d9\",\n            \"type\": \"folder\"\n        }\n    ]\n}"
+												},
+												"url": {
+													"raw": "{{base_url}}/locker/files",
+													"host": [
+														"{{base_url}}"
+													],
+													"path": [
+														"locker",
+														"files"
+													]
+												}
+											},
+											"status": "Created",
+											"code": 201,
+											"_postman_previewlanguage": "",
+											"header": [
+												{
+													"key": "Content-Security-Policy",
+													"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+												},
+												{
+													"key": "Cross-Origin-Opener-Policy",
+													"value": "same-origin"
+												},
+												{
+													"key": "Cross-Origin-Resource-Policy",
+													"value": "same-origin"
+												},
+												{
+													"key": "Origin-Agent-Cluster",
+													"value": "?1"
+												},
+												{
+													"key": "Referrer-Policy",
+													"value": "no-referrer"
+												},
+												{
+													"key": "Strict-Transport-Security",
+													"value": "max-age=15552000; includeSubDomains"
+												},
+												{
+													"key": "X-Content-Type-Options",
+													"value": "nosniff"
+												},
+												{
+													"key": "X-DNS-Prefetch-Control",
+													"value": "off"
+												},
+												{
+													"key": "X-Download-Options",
+													"value": "noopen"
+												},
+												{
+													"key": "X-Frame-Options",
+													"value": "SAMEORIGIN"
+												},
+												{
+													"key": "X-Permitted-Cross-Domain-Policies",
+													"value": "none"
+												},
+												{
+													"key": "X-XSS-Protection",
+													"value": "0"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json; charset=utf-8"
+												},
+												{
+													"key": "Content-Length",
+													"value": "194"
+												},
+												{
+													"key": "ETag",
+													"value": "W/\"c2-O4dJhRMnHymhrfr5S8inysK5Iz8\""
+												},
+												{
+													"key": "Vary",
+													"value": "Accept-Encoding"
+												},
+												{
+													"key": "Date",
+													"value": "Fri, 21 Nov 2025 20:22:16 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "keep-alive"
+												},
+												{
+													"key": "Keep-Alive",
+													"value": "timeout=5"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"code\": 201,\n    \"message\": \"Item added to locker\",\n    \"data\": {\n        \"attributes\": [\n            {\n                \"id\": \"692060dbc4511319dc6af27f\",\n                \"status\": \"file not found\"\n            },\n            {\n                \"id\": \"6920c1543a2e0023ab46e5d9\",\n                \"status\": \"Locked Successfully\"\n            }\n        ]\n    }\n}"
 										}
 									]
 								},
@@ -5764,7 +6470,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"items\": [\n        \"691fe8a82565835cfb61aed7\"\n    ]\n}"
+											"raw": "{\n    \"items\": [\n        \"692082a2b4b4058dd7e99811\"\n    ]\n}"
 										},
 										"url": {
 											"raw": "{{base_url}}/locker/files",
@@ -5810,7 +6516,7 @@
 											},
 											"status": "OK",
 											"code": 200,
-											"_postman_previewlanguage": "",
+											"_postman_previewlanguage": null,
 											"header": [
 												{
 													"key": "Content-Security-Policy",
@@ -5961,7 +6667,7 @@
 											},
 											"status": "OK",
 											"code": 200,
-											"_postman_previewlanguage": "",
+											"_postman_previewlanguage": null,
 											"header": [
 												{
 													"key": "Content-Security-Policy",
@@ -6115,7 +6821,7 @@
 											},
 											"status": "OK",
 											"code": 200,
-											"_postman_previewlanguage": "",
+											"_postman_previewlanguage": null,
 											"header": [
 												{
 													"key": "Content-Security-Policy",
@@ -6302,20 +7008,20 @@
 											"value": "application/json; charset=utf-8"
 										},
 										{
+											"key": "Content-Length",
+											"value": "535"
+										},
+										{
 											"key": "ETag",
-											"value": "W/\"434-QcW277bD9O26EUmmlhmwS5gWC/U\""
+											"value": "W/\"217-ZoRvLBiXtKVpN1z3lHHulNlgkXM\""
 										},
 										{
 											"key": "Vary",
 											"value": "Accept-Encoding"
 										},
 										{
-											"key": "Content-Encoding",
-											"value": "br"
-										},
-										{
 											"key": "Date",
-											"value": "Fri, 21 Nov 2025 15:24:05 GMT"
+											"value": "Fri, 21 Nov 2025 20:13:55 GMT"
 										},
 										{
 											"key": "Connection",
@@ -6324,14 +7030,10 @@
 										{
 											"key": "Keep-Alive",
 											"value": "timeout=5"
-										},
-										{
-											"key": "Transfer-Encoding",
-											"value": "chunked"
 										}
 									],
 									"cookie": [],
-									"body": "{\n    \"code\": 200,\n    \"message\": \"Trash Contents Retrieved!\",\n    \"data\": {\n        \"attributes\": {\n            \"results\": [\n                {\n                    \"_id\": \"69205f11c4511319dc6af262\",\n                    \"userId\": \"6920585c908da6db4ba621a0\",\n                    \"name\": \"Funny Vudsesa\",\n                    \"parent\": \"69205f24c4511319dc6af266\",\n                    \"path\": \"/Documents/Funny Vudsesa\",\n                    \"isTrashed\": true,\n                    \"isLocked\": false,\n                    \"fileCount\": 1,\n                    \"folderCount\": 0,\n                    \"size\": 900054304,\n                    \"type\": \"folder\",\n                    \"createdAt\": \"2025-11-21T12:46:09.012Z\",\n                    \"updatedAt\": \"2025-11-21T13:25:50.108Z\",\n                    \"__v\": 0\n                },\n                {\n                    \"_id\": \"69206218c4511319dc6af28d\",\n                    \"userId\": \"6920585c908da6db4ba621a0\",\n                    \"parent\": \"69205f11c4511319dc6af262\",\n                    \"name\": \"aaaa-1763729930186-847958745.zip\",\n                    \"originalName\": \"aaaa.zip\",\n                    \"path\": \"/Funny Video/aaaa.zip\",\n                    \"cloudPath\": \"/home/iput-object/EMPIRE/web-jects/jotter-app-backend/drive/6920585c908da6db4ba621a0/aaaa-1763729930186-847958745.zip\",\n                    \"fileType\": \"application/zip\",\n                    \"size\": 900054304,\n                    \"isTrashed\": true,\n                    \"isLocked\": false,\n                    \"metadata\": {\n                        \"encoding\": \"7bit\",\n                        \"fieldname\": \"files\"\n                    },\n                    \"type\": \"file\",\n                    \"lastAccessedAt\": null,\n                    \"__v\": 0,\n                    \"createdAt\": \"2025-11-21T12:59:04.373Z\",\n                    \"updatedAt\": \"2025-11-21T13:25:50.098Z\"\n                }\n            ],\n            \"page\": 1,\n            \"limit\": 10,\n            \"totalPages\": 1,\n            \"totalResults\": 2\n        }\n    }\n}"
+									"body": "{\n    \"code\": 200,\n    \"message\": \"Trash Contents Retrieved!\",\n    \"data\": {\n        \"attributes\": {\n            \"results\": [\n                {\n                    \"userId\": \"6920c0371faade3eb0dd3aa8\",\n                    \"folder\": {\n                        \"userId\": \"6920c0371faade3eb0dd3aa8\",\n                        \"name\": \"Experiments\",\n                        \"parent\": null,\n                        \"path\": \"/Experiments\",\n                        \"isTrashed\": true,\n                        \"isLocked\": false,\n                        \"fileCount\": 0,\n                        \"folderCount\": 1,\n                        \"size\": 900054304,\n                        \"type\": \"folder\",\n                        \"createdAt\": \"2025-11-21T19:45:24.676Z\",\n                        \"id\": \"6920c1543a2e0023ab46e5d9\"\n                    },\n                    \"type\": \"folder\",\n                    \"createdAt\": \"2025-11-21T19:55:40.649Z\",\n                    \"id\": \"6920c3bc554a93359f3b716a\"\n                }\n            ],\n            \"page\": 1,\n            \"limit\": 10,\n            \"totalPages\": 1,\n            \"totalResults\": 1\n        }\n    }\n}"
 								}
 							]
 						},
@@ -6340,20 +7042,22 @@
 							"request": {
 								"method": "POST",
 								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"items\":[\"6920c3bc554a93359f3b716a\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
 								"url": {
-									"raw": "{{base_url}}/trash/:trashId/restore",
+									"raw": "{{base_url}}/trash",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
-										"trash",
-										":trashId",
-										"restore"
-									],
-									"variable": [
-										{
-											"key": "trashId"
-										}
+										"trash"
 									]
 								}
 							},
@@ -6365,7 +7069,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"items\":[\n        {\"id\": \"69206218c4511319dc6af28d\", \"type\":\"file\"}\n    ]\n}",
+											"raw": "{\n    \"items\":[\"6920c3bc554a93359f3b716a\"]\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -6444,11 +7148,11 @@
 										},
 										{
 											"key": "Content-Length",
-											"value": "140"
+											"value": "158"
 										},
 										{
 											"key": "ETag",
-											"value": "W/\"8c-tNV6snE6xNJqqpfs4gvalYw8txI\""
+											"value": "W/\"9e-RmWHIDev4dB5jsU9CKuRYGx4sS0\""
 										},
 										{
 											"key": "Vary",
@@ -6456,7 +7160,7 @@
 										},
 										{
 											"key": "Date",
-											"value": "Fri, 21 Nov 2025 15:33:46 GMT"
+											"value": "Fri, 21 Nov 2025 20:14:16 GMT"
 										},
 										{
 											"key": "Connection",
@@ -6468,7 +7172,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n    \"code\": 200,\n    \"message\": \"Trashed Item Recovered!\",\n    \"data\": {\n        \"attributes\": [\n            {\n                \"id\": \"69206218c4511319dc6af28d\",\n                \"status\": \"Recovered Successfully\"\n            }\n        ]\n    }\n}"
+									"body": "{\n    \"code\": 200,\n    \"message\": \"Trashed Item Recovered!\",\n    \"data\": {\n        \"attributes\": [\n            {\n                \"success\": true,\n                \"id\": \"6920c3bc554a93359f3b716a\",\n                \"status\": \"Item Recovered from Trash\"\n            }\n        ]\n    }\n}"
 								}
 							]
 						},
@@ -6479,7 +7183,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"items\":[\n        {\"id\": \"69206218c4511319dc6af28d\", \"type\":\"folder\"}\n    ]\n}",
+									"raw": "{\n    \"items\":[\"6920bc20f7ddd5fad55fa246\"]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -6505,7 +7209,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"items\":[\n        {\"id\": \"69206218c4511319dc6af28d\", \"type\":\"folder\"}\n    ]\n}",
+											"raw": "{\n    \"items\":[\"6920bc20f7ddd5fad55fa246\"]\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -6585,11 +7289,11 @@
 										},
 										{
 											"key": "Content-Length",
-											"value": "130"
+											"value": "159"
 										},
 										{
 											"key": "ETag",
-											"value": "W/\"82-lcJWUxjLhxuxO4VwEcRuANuWnGQ\""
+											"value": "W/\"9f-xC7w4Ke2yPPWN6RI8MfBUrqqNQM\""
 										},
 										{
 											"key": "Vary",
@@ -6597,7 +7301,7 @@
 										},
 										{
 											"key": "Date",
-											"value": "Fri, 21 Nov 2025 15:42:59 GMT"
+											"value": "Fri, 21 Nov 2025 19:23:35 GMT"
 										},
 										{
 											"key": "Connection",
@@ -6609,7 +7313,7 @@
 										}
 									],
 									"cookie": [],
-									"body": "{\n    \"code\": 200,\n    \"message\": \"Items Permanently Deleted!\",\n    \"data\": {\n        \"attributes\": [\n            {\n                \"id\": \"69206218c4511319dc6af28d\",\n                \"status\": \"not found\"\n            }\n        ]\n    }\n}"
+									"body": "{\n    \"code\": 200,\n    \"message\": \"Items Permanently Deleted!\",\n    \"data\": {\n        \"attributes\": [\n            {\n                \"success\": true,\n                \"id\": \"6920bc20f7ddd5fad55fa246\",\n                \"status\": \"Item Deleted from Trash\"\n            }\n        ]\n    }\n}"
 								}
 							]
 						},
@@ -6718,7 +7422,7 @@
 										},
 										{
 											"key": "Date",
-											"value": "Fri, 21 Nov 2025 15:34:47 GMT"
+											"value": "Fri, 21 Nov 2025 19:19:32 GMT"
 										},
 										{
 											"key": "Connection",
