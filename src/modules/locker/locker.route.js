@@ -43,4 +43,27 @@ router.patch(
   lockerController.modifyLocker
 );
 
+// File Management Routes
+router
+  .route("/files")
+  .get(auth("user"), lockerAuth(), lockerController.getItems)
+  .post(
+    auth("user"),
+    lockerAuth(),
+    validate(lockerValidation.addToLocker),
+    lockerController.addItemToLocker
+  )
+  .delete(
+    auth("user"),
+    lockerAuth(),
+    validate(lockerValidation.filesArr),
+    lockerController.permanentDelete
+  )
+  .patch(
+    auth("user"),
+    lockerAuth(),
+    validate(lockerValidation.filesArr),
+    lockerController.removeItemFromLocker
+  );
+
 module.exports = router;

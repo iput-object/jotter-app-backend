@@ -1,6 +1,17 @@
 const httpStatus = require("http-status");
 const ApiError = require("../../utils/ApiError");
 const { userService, userModel } = require("../user");
+const { fileService, fileModel } = require("../file");
+const { folderService, folderModel } = require("../folder");
+const lockerModel = require("./locker.model");
+
+const createTrashDirectory = async (userId) => {
+  const folder = folderModel.create({
+    name: "Vault",
+    userId,
+  });
+  return folder;
+};
 
 const setupLocker = async (userId, userBody) => {
   const { pin, securityQuestion, securityAnswer } = userBody;
@@ -92,10 +103,112 @@ const resetLockerPassword = async (userId, securityAnswer, newPin) => {
   await user.save();
   return user;
 };
+
+// File operations can be added here
+
+const addItemToLocker = async (userId, items) => {
+  const result = await Promise.all(
+    items.map(async (item) => {
+      const { id, type } = item;
+      let model;
+      if (type === "file") {
+        model = await fileService.getFileById(userId, id);
+      } else {
+        model = await folderService.getFolderById(userId, id);
+      }
+      if (!model) return { id, status: `${type} not found` };
+      model.isLocked = true;
+      await lockerModel.create({
+        userId,
+        type,
+        [type]: id,
+      });
+      await model.save();
+      return { id, status: "Locked Successfully" };
+    })
+  );
+  return result;
+};
+
+const removeFromLocker = async (userId, items) => {
+  const result = await Promise.all(
+    items.map(async (item) => {
+      const lockItem = await lockerModel.findOne({
+        userId,
+        _id: item,
+      });
+      if (!lockItem) return { id: item, status: "Locker item not found" };
+      if (lockItem.type === "file") {
+        await fileModel.findByIdAndUpdate(lockItem.file, {
+          isLocked: false,
+        });
+      } else {
+        await folderModel.findByIdAndUpdate(lockItem.folder, {
+          isLocked: false,
+        });
+      }
+      await lockerModel.deleteOne({ userId, _id: item });
+      return { id: item, status: "Unlocked Successfully" };
+    })
+  );
+  return result;
+};
+
+const deleteFilesPermanently = async (userId, items) => {
+  const result = await Promise.all(
+    items.map(async (item) => {
+      const lockItem = await lockerModel.findOne({
+        userId,
+        _id: item,
+      });
+      if (!lockItem) return { id: item, status: "Locker item not found" };
+      if (lockItem.type === "file") {
+        const file = await fileModel.findOne({
+          userId,
+          _id: lockItem.file,
+          isLocked: true,
+        });
+        if (!file) {
+          return { id: item, status: "File not found" };
+        }
+        await fileService.hardDeleteFile(file);
+      } else {
+        await folderService.hardDeleteTree(lockItem.folder, {
+          userId,
+          isTrashed: false,
+        });
+      }
+
+      return {
+        id: item,
+        status: "Deleted Successfully",
+      };
+    })
+  );
+  return result;
+};
+
+const getLockedContents = async (userId, parentId, options) => {
+  const query = {
+    userId,
+  };
+
+  if (parentId) {
+    query.parent = parentId;
+  }
+  options.populate = "file,folder";
+  return await lockerModel.paginate(query, options);
+};
+
 module.exports = {
   setupLocker,
   loginLocker,
   getLockerDetails,
   modifyLocker,
   resetLockerPassword,
+  // File operations
+  addItemToLocker,
+  removeFromLocker,
+  deleteFilesPermanently,
+  getLockedContents,
 };

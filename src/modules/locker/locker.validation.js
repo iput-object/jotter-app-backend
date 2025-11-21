@@ -1,4 +1,5 @@
 const Joi = require("joi");
+const { objectId } = require("../../utils/joi");
 
 const register = {
   body: Joi.object().keys({
@@ -30,9 +31,30 @@ const modify = {
   }),
 };
 
+const addToLocker = {
+  body: Joi.object().keys({
+    items: Joi.array()
+      .items(
+        Joi.object().keys({
+          id: Joi.custom(objectId).required(),
+          type: Joi.string().valid("file", "folder").required(),
+        })
+      )
+      .required(),
+  }),
+};
+
+const filesArr = {
+  body: Joi.object().keys({
+    items: Joi.array().items(Joi.custom(objectId).required()).required(),
+  }),
+};
+
 module.exports = {
   register,
   login,
   modify,
   resetPassword,
+  filesArr,
+  addToLocker,
 };

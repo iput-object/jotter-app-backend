@@ -36,4 +36,8 @@ const lockerSchema = new mongoose.Schema(
 lockerSchema.plugin(toJSON);
 lockerSchema.plugin(paginate);
 
+lockerSchema.index({ userId: 1, file: 1 }, { unique: true, sparse: true });
+lockerSchema.index({ userId: 1, folder: 1 }, { unique: true, sparse: true });
+
+
 module.exports = mongoose.model("Locker", lockerSchema);

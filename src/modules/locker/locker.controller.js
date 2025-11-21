@@ -83,7 +83,67 @@ const resetPassword = catchAsync(async (req, res) => {
   );
 });
 
+// File Operations Starts Here
+const addItemToLocker = catchAsync(async (req, res) => {
+  const item = await lockerService.addItemToLocker(req.user.id, req.body.items);
+  res.status(httpStatus.CREATED).json(
+    response({
+      message: "Item added to locker",
+      status: "OK",
+      statusCode: httpStatus.CREATED,
+      data: item,
+    })
+  );
+});
 
+const removeItemFromLocker = catchAsync(async (req, res) => {
+  const result = await lockerService.removeFromLocker(
+    req.user.id,
+    req.body.items
+  );
+  res.status(httpStatus.OK).json(
+    response({
+      message: result.message,
+      status: "OK",
+      statusCode: httpStatus.OK,
+      data: result,
+    })
+  );
+});
+
+const getItems = catchAsync(async (req, res) => {
+  const options = pick(req.query, ["sortBy", "limit", "page"]);
+  const result = await lockerService.getLockedContents(
+    req.user.id,
+    req.body.parentId,
+    options
+  );
+
+  res.status(httpStatus.OK).json(
+    response({
+      message: "Locked items retrieved",
+      status: "OK",
+      statusCode: httpStatus.OK,
+      data: result,
+    })
+  );
+});
+
+const permanentDelete = catchAsync(async (req, res) => {
+  const result = await lockerService.deleteFilesPermanently(
+    req.user.id,
+    req.body.items
+  );
+
+  res.status(httpStatus.OK).json(
+    response({
+      message: result.message,
+      status: "OK",
+      statusCode: httpStatus.OK,
+      data: result,
+    })
+  );
+});
 
 module.exports = {
   // Auth & Locker Management
@@ -93,5 +153,9 @@ module.exports = {
   forgetLocker,
   modifyLocker,
   resetPassword,
-
+  // File Operations
+  addItemToLocker,
+  removeItemFromLocker,
+  getItems,
+  permanentDelete,
 };

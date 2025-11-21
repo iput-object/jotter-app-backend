@@ -45,17 +45,13 @@ const softDeleteTree = async (userId, rootFolderId) => {
   }
 };
 
-const hardDeleteTree = async (userId, rootFolderId) => {
+const hardDeleteTree = async (rootFolderId, extraQuery = {}) => {
   const queue = [rootFolderId];
 
   while (queue.length > 0) {
-    const currentFolderId = queue.shift();
-    const files = await fileModel.find({
-      userId,
-      parent: currentFolderId,
-      isTrashed: false,
-    });
-
+    const currentParent = queue.shift();
+    const fileQuery = { ...extraQuery, parent: currentParent };
+    const files = await fileModel.find(fileQuery);
     await Promise.all(
       files.map(async (file) => {
         try {
@@ -65,25 +61,12 @@ const hardDeleteTree = async (userId, rootFolderId) => {
         }
       })
     );
+    await fileModel.deleteMany(fileQuery);
+    const folderQuery = { ...extraQuery, parent: currentParent };
+    const childFolders = await folderModel.find(folderQuery);
+    queue.push(...childFolders.map(f => f._id));
 
-    await fileModel.deleteMany({
-      userId,
-      parent: currentFolderId,
-      isTrashed: false,
-    });
-
-    const childFolders = await folderModel.find({
-      userId,
-      parent: currentFolderId,
-      isTrashed: false,
-    });
-    queue.push(...childFolders.map((f) => f._id));
-
-    await folderModel.deleteOne({
-      userId,
-      _id: currentFolderId,
-      isTrashed: false,
-    });
+    await folderModel.deleteMany(folderQuery);
   }
 };
 
@@ -191,7 +174,10 @@ const deleteFolderPermanent = async (userId, folders) => {
       });
       if (!folder) return { folderId, status: "Folder not found" };
 
-      await hardDeleteTree(userId, folderId);
+      await hardDeleteTree(folderId, {
+        userId,
+        isTrashed: false,
+      });
 
       if (folder.parent) {
         await syncFolderCount(folder.parent, -1);
@@ -212,7 +198,6 @@ const getFolderContents = async (userId, parentId, filter, options) => {
     isTrashed: false,
     isLocked: false,
   };
-
 
   if (filter.minSize || filter.maxSize) {
     query.size = {};
@@ -256,4 +241,6 @@ module.exports = {
   deleteFolderPermanent,
   getFolderContents,
   moveFolder,
+  hardDeleteTree,
+  softDeleteTree,
 };

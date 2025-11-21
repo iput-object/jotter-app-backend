@@ -20,8 +20,14 @@ const getFileById = async (userId, _id) => {
   });
 };
 
+const hardDeleteFile = async (file) => {
+  await delFile(file.cloudPath);
+  await userService.syncStorage(file.userId, -file.size);
+  await file.deleteOne();
+};
+
 const uploadFiles = async (userId, folderId, filesData) => {
-  let relativePath;
+  let relativePath = "/";
   if (folderId) {
     const folderExists = await folderService.getFolderById(userId, folderId);
     if (!folderExists) {
@@ -97,22 +103,19 @@ const deleteFiles = async (userId, files) => {
 };
 
 const permanentDeleteFiles = async (userId, files) => {
-  // This requires more improvements for stability
   const response = await Promise.all(
     files.map(async (file) => {
-      const doc = await getFileById(userId, fileId);
-      if (!doc) return null;
+      const doc = await getFileById(userId, file);
+      if (!doc) return { id: file, status: "File not found" };
       try {
-        await delFile(file.cloudPath);
-        await userService.syncStorage(userId, -file.size);
-        await doc.deleteOne();
+        await hardDeleteFile(doc);
       } catch (error) {
         throw new ApiError(httpStatus.BAD_GATEWAY, error.message);
       }
+      return { id: file, status: "Deleted Successfully" };
     })
   );
-
-  return response.filter(boolean);
+  return response;
 };
 
 const getFile = async (userId, fileId) => {
@@ -287,4 +290,6 @@ module.exports = {
   downloadFile,
   copyFiles,
   moveFiles,
+  getFileById,
+  hardDeleteFile,
 };
